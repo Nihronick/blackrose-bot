@@ -11,10 +11,15 @@ API_TOKEN = os.getenv("TELEGRAM_API_TOKEN")
 if not API_TOKEN:
     raise ValueError("❌ TELEGRAM_API_TOKEN не найден!")
 
-# 🔒 Доступ
+# 🔒 Доступ - USERS
 ALLOWED_USERS_RAW = os.getenv("ALLOWED_USERS", "")
 ALLOWED_USERS = [int(x.strip()) for x in ALLOWED_USERS_RAW.split(",") if x.strip()]
 
+# 🔒 Доступ - CHATS (добавлено!)
+ALLOWED_CHATS_RAW = os.getenv("ALLOWED_CHATS", "")
+ALLOWED_CHATS = [int(x.strip()) for x in ALLOWED_CHATS_RAW.split(",") if x.strip()]
+
+# Режим доступа
 ACCESS_MODE = os.getenv("ACCESS_MODE", "users")
 
 # 📝 Лимиты
