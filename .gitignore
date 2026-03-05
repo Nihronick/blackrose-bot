@@ -73,3 +73,6 @@ CACHEHDR.TAG
 
 # Logs
 logs/*.log
+# Logs
+logs/
+*.log
