@@ -14,3 +14,7 @@ Telegram бот-справочник для гильдии в мобильной
 ```bash
 git clone https://github.com/Nihronick/blackrose-bot.git
 cd blackrose-bot
+
+## 📝 Лицензия
+
+Распространяется под лицензией MIT — подробности в файле [LICENSE](LICENSE).
