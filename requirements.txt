@@ -4,3 +4,4 @@ pydantic-settings>=2.0.0
 loguru>=0.7.0
 ruff>=0.1.0
 black>=23.0.0
+mypy>=1.0.0

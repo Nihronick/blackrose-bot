@@ -19,14 +19,14 @@ class Settings(BaseSettings):
         env_file_encoding = "utf-8"
 
 
-# ✅ Создаём глобальный экземпляр
+# Создаём глобальный экземпляр
 settings = Settings()
 
-# ✅ Валидация токена при старте
+# Валидация токена
 if not settings.TELEGRAM_API_TOKEN:
     raise ValueError("❌ TELEGRAM_API_TOKEN не найден!")
 
-# ✅ Экспортируем в старом формате (чтобы не менять весь код)
+# Экспортируем для совместимости
 API_TOKEN = settings.TELEGRAM_API_TOKEN
 ALLOWED_USERS = [int(x.strip()) for x in settings.ALLOWED_USERS.split(",") if x.strip()]
 ALLOWED_CHATS = [int(x.strip()) for x in settings.ALLOWED_CHATS.split(",") if x.strip()]

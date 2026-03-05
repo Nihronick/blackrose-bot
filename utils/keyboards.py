@@ -1,6 +1,7 @@
 from aiogram.types import ReplyKeyboardMarkup
 from aiogram.utils.keyboard import ReplyKeyboardBuilder
-from data.guides import MAIN_CATEGORIES, SUBMENUS, CONTENT
+
+from data.guides import MAIN_CATEGORIES, SUBMENUS
 
 
 def get_main_keyboard() -> ReplyKeyboardMarkup:

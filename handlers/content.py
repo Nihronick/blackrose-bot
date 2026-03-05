@@ -6,7 +6,7 @@ from aiogram.fsm.context import FSMContext
 from aiogram.types import Message
 
 from config import CAPTION_LIMIT
-from data.guides import MAIN_CATEGORIES, SUBMENUS, CONTENT
+from data.guides import CONTENT, SUBMENUS
 from utils import get_content_keyboard, get_main_keyboard, get_submenu_keyboard, send_content_messages, split_text
 
 logger = logging.getLogger(__name__)
