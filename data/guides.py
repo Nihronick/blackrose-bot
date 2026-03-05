@@ -8,7 +8,7 @@ CONTENT = {
     "promo_ether": {
         "text": """🔷 Гайд на Эфир | Ether 🔷
 
-Ориентировочный этап 340
+Ориентировочный этап 340 ± 5
 Атака 100f, с 10 слотами и Яростью меньше
 Крит. урон 20а
 ДС 3000
@@ -17,13 +17,12 @@ CONTENT = {
 Реликвии 30-40
 Спутники навык Элли на понижение оз 30-40
 Духи Noah,Loar,Sala 1-3⭐""",
-        "photo": "AgACAgIAAxkBAAMfaaL38FcGX4fruecBEi67aJDGrwYAAvgVaxsiyBhJuLJLhu2PMZABAAMCAAN4AAM6BA"
+        "photo": "AgACAgIAAxkBAAMfaaL38FcGX4fruecBEi67aJDGrwYAAvgVaxsiyBhJuLJLhu2PMZABAAMCAAN4AAM6BA",
     },
-    
     "promo_black_mithril": {
         "text": """⚔️ Гайд на Чёрный Мифрил | Black Mythril ⚔️
 
-Ориентировочный этап 460
+Ориентировочный этап 460 ± 5
 Атака 1.7-2g
 Крит. урон 25-28а
 ДС 4500-4800
@@ -34,14 +33,13 @@ CONTENT = {
 Духи Noah,Loar,Sala каждый 3-5⭐, навыки по ситуации е1-е3, с Бредом у Sala можно больше е1(E-повышение навыка)""",
         "photo": [
             "AgACAgIAAxkBAAMiaaL5Pk6_4tHsfHLM3xcsqlMDHXYAAv8Qaxu3-xlJCFJ4t7nn5aQBAAMCAAN4AAM6BA",
-            "AgACAgIAAxkBAAMjaaL5PpZu_unhbwNqHL3I4DuFKdgAAgERaxu3-xlJVdvuT54g0vABAAMCAAN4AAM6BA"
-        ]
+            "AgACAgIAAxkBAAMjaaL5PpZu_unhbwNqHL3I4DuFKdgAAgERaxu3-xlJVdvuT54g0vABAAMCAAN4AAM6BA",
+        ],
     },
-    
     "promo_demonite": {
         "text": """🟩 Гайд на Демонит | Demon Metal 🟩
 
-Ориентировочный этап 550
+Ориентировочный этап 550 ± 5
 Атака 60-65g
 Крит. урон 30-34а
 ДС 5000-5200
@@ -51,13 +49,12 @@ CONTENT = {
 Спутники 50+ навык Элли на понижение хр мобов
 Духи Noah 3*-миф, е3-5 Loar 3*-5*, е3-5 Sala миф, е1-2(E-повышение навыка)
 Камни навыка Вода, Камень, Огонь""",
-        "photo": "AgACAgIAAxkBAAMqaaL7J0FyF7BreFv9yM-_lklSgSAAAgkRaxu3-xlJbQRx5QV_1bcBAAMCAAN4AAM6BA"
+        "photo": "AgACAgIAAxkBAAMqaaL7J0FyF7BreFv9yM-_lklSgSAAAgkRaxu3-xlJbQRx5QV_1bcBAAMCAAN4AAM6BA",
     },
-    
     "promo_dragonos": {
         "text": """🐲 Гайд на Драгонос | Dragonos 🐲
 
-Ориентировочный этап 610
+Ориентировочный этап 610 ± 5
 Атака 250-300g с орбом, без 700g
 Хр 4g
 Крит. урон 32-37а
@@ -69,16 +66,15 @@ CONTENT = {
 Духи Noah миф, е4-5 Loar миф, е4-5 Sala миф, е1-е5(E-повышение навыка)
 Урон огня и камня в районе 3-4к
 Камни навыков Вода, Камень, Огонь""",
-        "photo": [ 
+        "photo": [
             "AgACAgIAAxkBAAMtaaL7bP0r1eaDCBPoBBgDkta55ZsAAg0Raxu3-xlJ_sP_eQO7c64BAAMCAAN4AAM6BA",
-            "AgACAgIAAxkBAAMsaaL7bPKI1HfCqSfvYw5Th8wph8UAAgwRaxu3-xlJ9bv5Cz6oHakBAAMCAAN4AAM6BA"
-        ]
+            "AgACAgIAAxkBAAMsaaL7bPKI1HfCqSfvYw5Th8wph8UAAgwRaxu3-xlJ9bv5Cz6oHakBAAMCAAN4AAM6BA",
+        ],
     },
-    
     "promo_blood": {
         "text": """🔮 Гайд на Кровь Великих | Ragna Blood 🔮
 
-Ориентировочный этап 700
+Ориентировочный этап 700 ± 5
 Атака 9h
 Крит. урон 35-40а
 ДС 8000-8400
@@ -89,15 +85,14 @@ CONTENT = {
 Духи Noah миф, е4-5 Loar миф, е4-5 Sala миф, е3-5(E-повышение навыка)
 Урон Огня и Камня около 6-8к
 Камни навыков Вода, Камень, Огонь""",
-        "photo": "AgACAgIAAxkBAAMwaaL7r_Em_0af8YanTMpMa7TsxG4AAhIRaxu3-xlJkVg_ZPujs7YBAAMCAAN4AAM6BA"
+        "photo": "AgACAgIAAxkBAAMwaaL7r_Em_0af8YanTMpMa7TsxG4AAhIRaxu3-xlJkVg_ZPujs7YBAAMCAAN4AAM6BA",
     },
-    
     "promo_frost": {
         "text": """🥶 Гайд на Иней Войны | War Frost 🥶
 
-Ориентировочный этап 770
+Ориентировочный этап 770 ± 5
 Атака 156h
-Хп/Rxh минимум 630g/30g (возможно, придётся потратить миссы)
+Хп/Rxh минимум 630g/30g (возможно, придётся потраить миссы)
 Крит. урон 63-67а
 ДС 12000-12500
 Класс с20 2-5⭐
@@ -108,13 +103,12 @@ CONTENT = {
 Фамильяр необязательно, но делается дешево 6⭐6⭐6⭐ или 7⭐7⭐7⭐
 Хи/Ти Ку На
 Камни навыков Вода,Земля,Огонь""",
-        "photo": "AgACAgIAAxkBAAMyaaL71ctCFlJIpu6ecx223vQMIMQAAh0Raxu3-xlJDJcD6BZwuL8BAAMCAAN4AAM6BA"
+        "photo": "AgACAgIAAxkBAAMyaaL71ctCFlJIpu6ecx223vQMIMQAAh0Raxu3-xlJDJcD6BZwuL8BAAMCAAN4AAM6BA",
     },
-    
     "promo_nox": {
         "text": """😈 Гайд на Тёмный Нокс | Dark Nox 😈
 
-Ориентировочный этап 850
+Ориентировочный этап 850 ± 5
 Атака 4i
 Крит. урон 72а
 ДС 18500-19500
@@ -126,15 +120,16 @@ CONTENT = {
 Камни навыков Вода,Камень,Огонь
 Фамильяр ХИКУНА/ХИКУРИОН 7⭐7⭐7⭐
 
-💡 В этом гайде хотелось бы пояснить за статы. это как раз промоут, на котором одни игроки могут начинать делать больший упор в меч, а другие в класс. Поэтому не забываем, что если у вас условный сид, то меч будет хуже, также и с реликвиями, если меньше крита, то больше атаки, необязательно делать все так же. Это касается и навыков, если у ⚔️ на несколько уровней больше, то в итоге статов нужно будет меньше.""",
-        "photo": "AgACAgIAAxkBAAM0aaL762ojxeZwZTd2BeMSEWwY_rkAAiIRaxu3-xlJEvQoeTM75cUBAAMCAAN4AAM6BA"
+💡 В этом гайде хотелось бы пояснить за статы. это как раз промоут, на котором одни игроки могут начинать делать больший упор в меч,
+а другие в класс. Поэтому не забываем, что если у вас условный сид, то меч будет хуже, также и с реликвиями, если меньше крита, то больше атаки, необязательно делать все так же. Это касается и навыков,
+если у ⚔️ на несколько уровней больше, то в итоге статов нужно будет меньше.""",
+        "photo": "AgACAgIAAxkBAAM0aaL762ojxeZwZTd2BeMSEWwY_rkAAiIRaxu3-xlJEvQoeTM75cUBAAMCAAN4AAM6BA",
     },
-    
     "promo_abyss": {
         "text": """🌊 Гайд на Синюю Бездну | Blue Abyss 🌊
 
-Ориентировочный этап 955
-Атака и крит.урон на этом этапе игры у кого-то уже будут фулл реликвии, а у кого-то нет, а это основной источник ку, примерно 150i с 200а и 180-200i с 150а
+Ориентировочный этап 955 ± 5
+Атака и крит.урон на этом этапе игры у кого-то уже будут фулл реликвии, а у кого-то нет, а это основной источник крит.урона, примерно 150i с 200а и 180-200i с 150а
 Хп минимум 310h и около 18h рхп
 ДС 29000-31000
 Класс терра 3-5⭐, сид
@@ -147,14 +142,13 @@ CONTENT = {
 Камни навыков Вода,Камень,Огонь""",
         "photo": [
             "AgACAgIAAxkBAAM2aaL9UfabyD4Hho1pw37BpS9s5BkAAkURaxu3-xlJNAdM8oE0w9MBAAMCAAN4AAM6BA",
-            "AgACAgIAAxkBAAM3aaL9UQgT6VpVafo7sT0sTxWD3rQAAkYRaxu3-xlJ-cxB6WVwGg8BAAMCAAN4AAM6BA"
-        ]
+            "AgACAgIAAxkBAAM3aaL9UQgT6VpVafo7sT0sTxWD3rQAAkYRaxu3-xlJ-cxB6WVwGg8BAAMCAAN4AAM6BA",
+        ],
     },
-    
     "promo_infinat": {
         "text": """🔴 Гайд на Инфинат | Inflnat 🔴
 
-Ориентировочный этап 1020
+Ориентировочный этап 1020 ± 5
 Атака 3.5j-3.7j
 Хп/Rxh 4.5i/230h
 Крит. урон 210а-220а
@@ -171,14 +165,13 @@ CONTENT = {
 *У кого-то может быть наоборот, есть нова, но нет фулл меча""",
         "photo": [
             "AgACAgIAAxkBAAM7aaL-kbQp0VEp7Vx76kr-nL6ZJAsAAlMRaxu3-xlJxQPvIn19-8cBAAMCAAN4AAM6BA",
-            "AgACAgIAAxkBAAM6aaL-kaWSgiA2n0xVRKyPDw3JenMAAlIRaxu3-xlJiBXNGAMpYTMBAAMCAAN4AAM6BA"
-        ]
+            "AgACAgIAAxkBAAM6aaL-kaWSgiA2n0xVRKyPDw3JenMAAlIRaxu3-xlJiBXNGAMpYTMBAAMCAAN4AAM6BA",
+        ],
     },
-    
     "promo_cyclone": {
         "text": """🌪 Гайд на Циклон | Ciclos 🌪
 
-Ориентировочный этап 1120
+Ориентировочный этап 1120 ± 5
 Атака 290j-320j
 Крит. урон 235а-245а
 ДС 48000-53000
@@ -188,20 +181,19 @@ CONTENT = {
 Спутники Эльфийская песня 100 лвл, Мудрость войны 100 лвл
 Духи Noah,Loar,Sala все миф, е5(E-повышение навыка)
 Фамильяр ХИКУНА/ХИКУРИОН 7⭐
-Элементальный урон 30а-33а Огня и Камня 
+Элементальный урон 30а-33а Огня и Камня
 Камни навыков Вода,Камень,Огонь""",
         "photo": [
             "AgACAgIAAxkBAAM-aaL_02ahQ-ib0EBUfDHYyuMkKGIAAl0Raxu3-xlJ_sZQMqPLsNsBAAMCAAN4AAM6BA",
-            "AgACAgIAAxkBAAM_aaL_01cRQt21TIwi_T3Nv38qOQQAAl4Raxu3-xlJjOvoz6DytH4BAAMCAAN4AAM6BA"
-        ]
+            "AgACAgIAAxkBAAM_aaL_01cRQt21TIwi_T3Nv38qOQQAAl4Raxu3-xlJjOvoz6DytH4BAAMCAAN4AAM6BA",
+        ],
     },
-    
     "promo_ancient": {
         "text": """🐉 Гайд на ЭншентКаньон | Ancient Canine 🐉
 
 Небольшой дисклеймер: урон, получаемый из статов ниже, непосредственно связан с самой проходкой, при других прожатиях может понадобиться больше урона.
 
-Ориентировочный этап 1210 (без фамика 888 проходится уже на 1200)
+Ориентировочный этап 1210 ± 5 (без фамика 8⭐8⭐8⭐ проходится уже на 1200)
 Атака 8.5k-9k
 Крит. урон 280а-300а
 ДС 70000-75000
@@ -213,15 +205,12 @@ CONTENT = {
 ФАМИЛЬЯР так как босс имеет стихию Огня, желательно иметь А(фамильяр), но можно и ХИКУНА/ все 7⭐ и выше
 КАМНИ НАВЫКОВ Вода,Камень,Ветер
 ЭЛЕМЕНТАЛЬНЫЙ УРОН Огня 35-40а, Ветра 30а+, Воды 25а+(если используете А, если нет, неважно), Земля 35-40а, если используете Охоту на демонов (если нет, неважно)""",
-        "photo": [
-            "AgACAgIAAxkBAANCaaMAAW86Q--SgJQ0pbzoCX0V6c46AAJvEWsbt_sZSd8rjVuRAfFRAQADAgADeAADOgQ"
-        ]
+        "photo": ["AgACAgIAAxkBAANCaaMAAW86Q--SgJQ0pbzoCX0V6c46AAJvEWsbt_sZSd8rjVuRAfFRAQADAgADeAADOgQ"],
     },
-    
     "promo_gigalor": {
         "text": """🗿 Гайд на Гигалор | Gigarock 🗿
 
-Ориентировочный этап 1300
+Ориентировочный этап 1300 ± 5
 Атака 350k с ярость/ 380k без ярости
 Хп/Rxh если без ярости, то неважно / с яростью для комфортного прохождения желательно более 500g*
 *можно меньше, но придётся чаще давать себе отхиливаться
@@ -238,10 +227,9 @@ CONTENT = {
         "photo": [
             "AgACAgIAAxkBAANMaaMB-xGc5sc8e5SuKBT6MKft3NIAAogRaxu3-xlJG3B1NywycMYBAAMCAAN4AAM6BA",
             "AgACAgIAAxkBAANEaaMBt2jtb9lHC5XaitJxnJeHj5cAAoQRaxu3-xlJdfEGXN9_5YcBAAMCAAN4AAM6BA",
-            "AgACAgIAAxkBAANHaaMBwWHrJYSaqQlGJZORC0y_8j4AAoURaxu3-xlJIR-Ujm_5MWUBAAMCAAN4AAM6BA"
-        ]
+            "AgACAgIAAxkBAANHaaMBwWHrJYSaqQlGJZORC0y_8j4AAoURaxu3-xlJIR-Ujm_5MWUBAAMCAAN4AAM6BA",
+        ],
     },
-    
     # 📜 ОБЩАЯ ИНФОРМАЦИЯ
     "info_event": {
         "text": """👻 Что покупать на ивенте?
@@ -252,33 +240,29 @@ CONTENT = {
 📌 Приоритет 4: Бери навыки РЕДКИЕ приоритет будет на картинке
 📌 Приоритет 5: Зеленые перья и фиолетовые - это только в том случае, когда редкие навыки уже заполнены.
 ❗️❗️❗️Не стоит менять на АЛМАЗЫ, только покупка по приоритету""",
-        "photo": "AgACAgIAAxkBAAOmaaMtk1J--RRDyeSEAAHZy_nOCajaAAL5F2sbWG8YScOkJLMjq6Z9AQADAgADeAADOgQ"
+        "photo": "AgACAgIAAxkBAAOmaaMtk1J--RRDyeSEAAHZy_nOCajaAAL5F2sbWG8YScOkJLMjq6Z9AQADAgADeAADOgQ",
     },
-    
     "info_rage": {
         "text": """😤 Как играть с Яростью?
 
 Обучающее видео, смотрите на тайминги нажатия кнопок""",
         "video": [
             "BAACAgIAAxkBAANTaaMDs4vBfNbeTwuXlyvNfTNlwQMAAlyXAAJYbxhJg6RDvTUy7Ow6BA",
-            "BAACAgIAAxkBAANSaaMDszBBYzq1r-q02ZTpXsvSL8gAAjCXAAJYbxhJe15Twn2IX4A6BA"
-        ]
+            "BAACAgIAAxkBAANSaaMDszBBYzq1r-q02ZTpXsvSL8gAAjCXAAJYbxhJe15Twn2IX4A6BA",
+        ],
     },
-    
     "info_ads": {
         "text": """📺 Просмотр рекламы
 Мужик ну тут либо VPN, по-другому отдаешь свои кровные шекели в районе 500-700 рублей на покупку скипа
 Инструкция...""",
-        "photo": None
+        "photo": None,
     },
-    
     "info_pets": {
         "text": """🐾 Прокачка спутников
 Просто, качай по приоритету указаному тут, с звездой прям нужно качать. Души на твое усмотрение, какой меч хочешь получать.
 Инфо о спутниках...""",
-        "photo": "AgACAgIAAxkBAANQaaMCcihI204_aWGRViJcgAQziUMAApUTaxvV2fBIghGp6sbr3-ABAAMCAAN5AAM6BA"
+        "photo": "AgACAgIAAxkBAANQaaMCcihI204_aWGRViJcgAQziUMAApUTaxvV2fBIghGp6sbr3-ABAAMCAAN5AAM6BA",
     },
-    
     "info_sword": {
         "text": """⚔️ Меч душ и гравировка
 Рекомендуется
@@ -287,14 +271,12 @@ CONTENT = {
 Постарайтесь собрать как можно больше драгоценных камней ATK (L-образной формы), не забывая при этом заполнять игровое поле.
 Золотые блоки в начале и середине игры (I-образной формы) могут значительно увеличить ваш процент золота. Из-за этого может оказаться полезным сохранить 2 набора гравюр в начале игры: 1 для увеличения количества золотых монет (используется во время фермерства) и 1 для увеличения урона (используется во время толкания(стадии) или ежедневной работы по мере необходимости).,
 Поздняя игра: Оружие Дущи уровня 1500+ может отдавать предпочтение критическим блокам из-за худшего вычисления блоков Atk,
-как в начале игры: Если у вас уровень ниже Dragonos, крит может временно превышать ATK из-за вычисления.
-Гайд по оружию...""",
+как в начале игры: Если у вас уровень ниже Dragonos, крит может временно превышать ATK из-за вычисления.""",
         "document": [
             "BQACAgIAAxkBAAOOaaMLHUwJIntgk6Kn9oK421gY5TYAArGXAAJYbxhJjmT0cedYTKE6BA",
-            "BQACAgIAAxkBAAONaaMLG7mLl5-o3VZuJXOZ5OoxgnIAArCXAAJYbxhJeBddek6gPck6BA"
-        ]
+            "BQACAgIAAxkBAAONaaMLG7mLl5-o3VZuJXOZ5OoxgnIAArCXAAJYbxhJeBddek6gPck6BA",
+        ],
     },
-    
     "info_farm": {
         "text": """💰 Фарм этапов
 
@@ -311,52 +293,77 @@ CONTENT = {
 
 Но у оффлайн-фермы все же есть некоторые преимущества (особенно если вы только начали игру).:
 После 160-го этапа вы получаете только 4 и 18 mpw соответственно, так что вы не можете выбирать, где фармить.""",
-        "photo": None
+        "photo": None,
     },
-    
     "info_build": {
         "text": """ Билды для фарма и Пробития стадий
          """,
-         "photo": [
+        "photo": [
             "AgACAgIAAxkBAAOoaaMupovsv_wyoo_RuwpCbiisu_IAAgcYaxtYbxhJeHEV0ClADykBAAMCAAN5AAM6BA",
-            "AgACAgIAAxkBAAOqaaMvSwjuyfY91suOzBdU16XC1A0AAggYaxtYbxhJRwUFzRxxr7oBAAMCAAN5AAM6BA"
-         ]
+            "AgACAgIAAxkBAAOqaaMvSwjuyfY91suOzBdU16XC1A0AAggYaxtYbxhJRwUFzRxxr7oBAAMCAAN5AAM6BA",
+        ],
     },
-    
+    "info_spirit": {
+        "text": """Духи
+
+Оптимизация духа ранней игры,
+Когда мы начинаем играть с духами, мы хотим, чтобы нашими статами были два духа, которых мы рано пробуждаем на А6 (игроки могут назвать это мифическим возвышением),
+и два духа с хорошими множителями навыков, так что в целом мы получаем максимальную выгоду при наименьшем количестве духов.
+Поскольку характеристики всех 3-х экипированных духов усредняются, наличие 2-х высоко пробужденных духов компенсирует отсутствие характеристик у третьего улучшенного.
+
+Мы берем по 1 духу из каждого элемента(огонь,земля,ветер,вода), чтобы оптимизировать наши ресурсы.
+
+Оптимизация духов в середине игры,
+Когда вы пополняете свой список духов и работаете над созданием Бессмертных духов, после достижения мифического уровня 12/12 вы можете начать работать над улучшениями.
+Для бессмертных приоритет пробуждения меняется по мере расширения ваших возможностей.
+A - возвышение духа, E - усиление духа(навыка)
+
+🔥Fire: Sala A6 -> Mum E5 -> Mum A6 ->  Bo A6 -> Mum A12 -> Sala E5 -> Sala A12 -> A12 Bo -> A18 Mum -> A18 Sala
+🌏Earth: Loar A6E5 -> Noah E5 -> Noah A6 > Radon A6 -> Noah A12 -> Loar A12 -> A12 Radon -> A18 Noah -> A18 Loar
+💨Wind: Zappy A6E5 -> Kart A6 -> Herh A6 -> Zappy A12 -> Kart E5 -> A12 Kart -> A12 Herh -> A18 Zappy
+💧Water: Todd E5 -> Todd A6 -> Luga A6 -> Ark A6 -> Luga E5 -> Luga A12/Todd A12 -> A12 Ark -> A18 Luga -> A18 Todd
+
+📌Немного про источник циркуляции
+Основные духи, у которых сами поднимаем уровень.
+Noah, Zappy, Loar, Todd, Radon, Mum
+Присоединяем к фонтану
+Nerh,Ark,Boo,Kart,Sala,Luga
+
+❗️❗️❗️Пробуждение:
+После 12/12 Мифических духов вы разблокируете его.
+Выберите вариант с 4 равными полосами, пропустите при появлении запроса.
+В нем есть несколько наград в виде бриллиантов, а статистика в целом повышается на 20%.""",
+        "photo": None,
+    },
     # 🌳 ПРИКЛЮЧЕНИЯ
     "adv_cave": {
         "text": """🕳️ Учебная пещера""",
-        "photo": "AgACAgIAAxkBAAOsaaMv4ENvTnlg_AhfH7zkeJPxrisAAhkYaxtYbxhJ7cHTkXA45QEBAAMCAAN5AAM6BA"
+        "photo": "AgACAgIAAxkBAAOsaaMv4ENvTnlg_AhfH7zkeJPxrisAAhkYaxtYbxhJ7cHTkXA45QEBAAMCAAN5AAM6BA",
     },
-    
     "adv_rift": {
         "text": """🌀 Межпространственный разлом""",
-        "photo": "AgACAgIAAxkBAAOwaaMwwu_lAAF-vTHuiHUXFVFPXI5YAAIiGGsbWG8YSZE4x5AUbk4qAQADAgADeQADOgQ"
+        "photo": "AgACAgIAAxkBAAOwaaMwwu_lAAF-vTHuiHUXFVFPXI5YAAIiGGsbWG8YSZE4x5AUbk4qAQADAgADeQADOgQ",
     },
-    
     "adv_mind": {
         "text": """🪙 Золотой рудник
         Увеличьте свой максимальный этаж с 5 зоны, используя всего 1 перо.,
-Производите фарм, используя 3 пера на повторе в зоне 1-4 зоны, чтобы вы могли уничтожить 90-95% врагов, когда пол имеет стихию земли (это, должно быть, труднее всего очистить, так как большинство навыков фермерства - это ветер). 
+Производите фарм, используя 3 пера на повторе в зоне 1-4 зоны, чтобы вы могли уничтожить 90-95% врагов, когда пол имеет стихию земли (это, должно быть, труднее всего очистить, так как большинство навыков фермерства - это ветер).
 Старайтесь фармить зону 2, но подойдет любая зона, кроме зоны 5. Зона 5 хуже подходит для фарма, потому что в ней меньше мобов, а значит, фарм принесет меньше ресурсов. Зона 1 даст немного меньше опыта, чем область 2.,
 Старайтесь фармить нечетные этажи, где ресурсы увеличиваются. После закрытия 250-го этажа шахты выделите 4n+1 этаж, так как кубические усиления закончились.,
 Проверьте свою ситуацию. Каждый раз, когда вы будете фармить закрытую шахту, ваш урон будет разным, поэтому больше ресурсов вы сможете получить на разных участках или этажах. Это простые рекомендации.,
 
 лучшее время для запуска закрытой шахты - это когда вы можете накапливать ежедневные свитки + "горячее время выходных" + бонусы за события, получая 12-кратное золото и 6-кратный опыт.,
 Использование усилителя событий для получения большего количества кубов в закрытой шахте бесполезно, потому что большинство кубов в Закрытой шахте добывается из сундука. Использование обычной ежедневной прокрутки кубов все еще может быть полезным, потому что мы обычно получаем больше кубов от мобов в закрытой шахте, чем от обычных 18mpw.""",
-        "photo": "AgACAgIAAxkBAAOyaaMxJXXMt1LoOGmMUrIGmayMFCkAAicYaxtYbxhJgbMn7yhbg8YBAAMCAAN5AAM6BA"
+        "photo": "AgACAgIAAxkBAAOyaaMxJXXMt1LoOGmMUrIGmayMFCkAAicYaxtYbxhJgbMn7yhbg8YBAAMCAAN5AAM6BA",
     },
-
     "adv_shelter": {
         "text": """🔥 Приют спящего пламени""",
-        "photo": "AgACAgIAAxkBAAOuaaMwUrVVRk8dCfUEj_ZkGo3RqpIAAh0YaxtYbxhJVbF4OvxfPdEBAAMCAAN5AAM6BA"
+        "photo": "AgACAgIAAxkBAAOuaaMwUrVVRk8dCfUEj_ZkGo3RqpIAAh0YaxtYbxhJVbF4OvxfPdEBAAMCAAN5AAM6BA",
     },
-
     "adv_forest": {
         "text": """🌲 Лес циркуляции""",
-        "photo": "AgACAgIAAxkBAAO0aaMyf9DHWalLxPBuEh-nQEeek_QAAioYaxtYbxhJgpzfy1KFZcMBAAMCAAN5AAM6BA"
+        "photo": "AgACAgIAAxkBAAO0aaMyf9DHWalLxPBuEh-nQEeek_QAAioYaxtYbxhJgpzfy1KFZcMBAAMCAAN5AAM6BA",
     },
-
     # 🛡 ГИЛЬДИЯ
     "guild_wyvern": {
         "text": """🐉 Виверна
@@ -366,9 +373,8 @@ CONTENT = {
 3. Битва с Виверной.
 Почему это важно.
 Чем выше находиться наша гильдия, тем больше ресурсов мы получаем индивидуально(от ранга гильдии), каждый кто внес наиболее больший вклад(индивидуальный: Готовка,Битва с виверной), получает ещё больше ресурсов согласно внутреннему рангу гильдии.""",
-        "photo": None
+        "photo": None,
     },
-    
     "guild_cooking": {
         "text": """🍲 Приготовление блюд
 Приоритет еды, будет озвучен ГМ, т.к каждый сезон блюда меняются, но есть опредленные свойства блюд, которые не меняются.
@@ -377,10 +383,10 @@ CONTENT = {
 Омурис – Увеличивает время боя в рейде. (римечание: В сезоне может название поменяться, и бафф)
 Фруктовый салат / Жевательная паста – Уменьшает время восстановления навыка.
 Бессмертный стейк - Увеличивает урон от виверн.
-Бонусы стихий - Определите приоритетность элементов, которые вы будете использовать (огонь и земля для большинства игроков). 
+Бонусы стихий - Определите приоритетность элементов, которые вы будете использовать (огонь и земля для большинства игроков).
 """,
-        "photo": "AgACAgIAAxkBAAO2aaMz3LiVBsvaRVa_b9mw_PWcpS0AAi0YaxtYbxhJnbkK_kvYziABAAMCAAN4AAM6BA"
-    }
+        "photo": "AgACAgIAAxkBAAO2aaMz3LiVBsvaRVa_b9mw_PWcpS0AAi0YaxtYbxhJnbkK_kvYziABAAMCAAN4AAM6BA",
+    },
 }
 
 # Меню категорий
@@ -388,7 +394,7 @@ MAIN_CATEGORIES = {
     "cat_promoutes": "🪨 Промоуты",
     "info_general": "📜 Общая информация",
     "adv_adventures": "🌳 Приключения",
-    "guild_guild": "🛡 Гильдия"
+    "guild_guild": "🛡 Гильдия",
 }
 
 # Подменю
@@ -414,6 +420,7 @@ SUBMENUS = {
         ("info_pets", "🐾 Прокачка спутников"),
         ("info_sword", "⚔️ Меч душ и гравировка"),
         ("info_farm", "💰 Фарм этапов"),
+        ("info_spirit", "Духи/Spirits"),
     ],
     "adv_adventures": [
         ("adv_cave", "🕳️ Учебная пещера"),
@@ -425,5 +432,5 @@ SUBMENUS = {
     "guild_guild": [
         ("guild_wyvern", "🐉 Виверна"),
         ("guild_cooking", "🍲 Приготовление блюд"),
-    ]
+    ],
 }

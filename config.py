@@ -1,20 +1,19 @@
 from pydantic_settings import BaseSettings
-from typing import List
 
 
 class Settings(BaseSettings):
     """Настройки бота"""
-    
+
     TELEGRAM_API_TOKEN: str
     ALLOWED_USERS: str
     ALLOWED_CHATS: str = ""
     ACCESS_MODE: str = "users"
-    
+
     # Лимиты
     TEXT_SPLIT_LIMIT: int = 4000
     CAPTION_LIMIT: int = 1024
     DELETE_DELAY: float = 0.1
-    
+
     class Config:
         env_file = ".env"
         env_file_encoding = "utf-8"

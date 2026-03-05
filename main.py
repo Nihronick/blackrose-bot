@@ -1,12 +1,13 @@
 import asyncio
 import sys
-from loguru import logger
+
 from aiogram import Bot, Dispatcher
 from aiogram.fsm.storage.memory import MemoryStorage
+from loguru import logger
 
-from config import API_TOKEN, ACCESS_MODE
+from config import ACCESS_MODE, API_TOKEN
+from handlers import content_router, errors_router, helpers_router, menu_router
 from middleware import AccessMiddleware
-from handlers import menu_router, content_router, helpers_router, errors_router
 
 # ✅ Настройка loguru
 logger.remove()  # Убираем стандартный handler
@@ -14,7 +15,7 @@ logger.add(
     sys.stdout,
     format="<green>{time:YYYY-MM-DD HH:mm:ss}</green> | <level>{level: <8}</level> | <cyan>{name}</cyan> | <level>{message}</level>",
     level="INFO",
-    colorize=True
+    colorize=True,
 )
 
 # ✅ Логирование в файл (опционально, для отладки)
@@ -23,7 +24,7 @@ logger.add(
     rotation="00:00",
     retention="7 days",
     level="DEBUG",
-    format="{time:YYYY-MM-DD HH:mm:ss} | {level: <8} | {name} | {message}"
+    format="{time:YYYY-MM-DD HH:mm:ss} | {level: <8} | {name} | {message}",
 )
 
 logger.info("🚀 Запуск бота...")
@@ -37,10 +38,10 @@ if ACCESS_MODE is not None:
     dp.message.middleware(AccessMiddleware())
 
 # ✅ Роутеры (ВАЖНО: errors_router первым!)
-dp.include_router(errors_router)    # ⭐ Обработка ошибок
-dp.include_router(content_router)   # 1️⃣ Контент (более специфичный)
-dp.include_router(menu_router)      # 2️⃣ Главное меню
-dp.include_router(helpers_router)   # 3️⃣ File ID хелперы
+dp.include_router(errors_router)  # ⭐ Обработка ошибок
+dp.include_router(content_router)  # 1️⃣ Контент (более специфичный)
+dp.include_router(menu_router)  # 2️⃣ Главное меню
+dp.include_router(helpers_router)  # 3️⃣ File ID хелперы
 
 
 async def main():

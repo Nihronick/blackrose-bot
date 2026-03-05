@@ -1,6 +1,6 @@
 import logging
+
 from aiogram import F, Router, types
-from aiogram.exceptions import TelegramBadRequest
 
 logger = logging.getLogger(__name__)
 
@@ -14,7 +14,7 @@ async def get_video_id(message: types.Message):
         f"🎥 <b>VIDEO File ID:</b>\n<code>{video.file_id}</code>\n\n"
         f"📊 Размер: {video.file_size / (1024*1024):.2f} MB\n"
         f"⏱ Длительность: {video.duration} сек",
-        parse_mode="HTML"
+        parse_mode="HTML",
     )
 
 
@@ -26,7 +26,7 @@ async def get_document_id(message: types.Message):
         f"📄 Имя: {doc.file_name}\n"
         f"📊 Размер: {doc.file_size / (1024*1024):.2f} MB\n"
         f"🔖 Тип: {doc.mime_type or 'unknown'}",
-        parse_mode="HTML"
+        parse_mode="HTML",
     )
 
 
@@ -37,7 +37,7 @@ async def get_photo_id(message: types.Message):
         f"📸 <b>PHOTO File ID:</b>\n<code>{photo.file_id}</code>\n\n"
         f"📊 Размер: {photo.file_size / 1024:.2f} KB\n"
         f"📐 {photo.width}x{photo.height}",
-        parse_mode="HTML"
+        parse_mode="HTML",
     )
 
 
@@ -45,7 +45,6 @@ async def get_photo_id(message: types.Message):
 async def get_animation_id(message: types.Message):
     anim = message.animation
     await message.answer(
-        f"🎬 <b>GIF File ID:</b>\n<code>{anim.file_id}</code>\n\n"
-        f"📊 Размер: {anim.file_size / (1024*1024):.2f} MB",
-        parse_mode="HTML"
+        f"🎬 <b>GIF File ID:</b>\n<code>{anim.file_id}</code>\n\n" f"📊 Размер: {anim.file_size / (1024*1024):.2f} MB",
+        parse_mode="HTML",
     )

@@ -1,23 +1,19 @@
-from aiogram.utils.keyboard import ReplyKeyboardBuilder
 from aiogram.types import ReplyKeyboardMarkup
-
-from guides import MAIN_CATEGORIES, SUBMENUS
+from aiogram.utils.keyboard import ReplyKeyboardBuilder
+from data.guides import MAIN_CATEGORIES, SUBMENUS, CONTENT
 
 
 def get_main_keyboard() -> ReplyKeyboardMarkup:
     """Главное меню (Reply Keyboard)"""
     builder = ReplyKeyboardBuilder()
-    
-    for callback, text in MAIN_CATEGORIES.items():
+
+    for _callback, text in MAIN_CATEGORIES.items():  # префикс _ показывает что не используется
         builder.button(text=text)
-    
+
     builder.adjust(2)
     builder.button(text="❌ Закрыть меню")
-    
-    return builder.as_markup(
-        resize_keyboard=True,
-        one_time_keyboard=False
-    )
+
+    return builder.as_markup(resize_keyboard=True, one_time_keyboard=False)
 
 
 def get_submenu_keyboard(category_key: str) -> ReplyKeyboardMarkup:
@@ -26,17 +22,14 @@ def get_submenu_keyboard(category_key: str) -> ReplyKeyboardMarkup:
     """
     builder = ReplyKeyboardBuilder()
     items = SUBMENUS.get(category_key, [])
-    
-    for callback, text in items:
+
+    for _callback, text in items:
         builder.button(text=text)
-    
+
     builder.adjust(3, repeat=True)
     builder.button(text="🔙 В главное меню")
-    
-    return builder.as_markup(
-        resize_keyboard=True,
-        one_time_keyboard=False
-    )
+
+    return builder.as_markup(resize_keyboard=True, one_time_keyboard=False)
 
 
 def get_content_keyboard(category_key: str | None = None) -> ReplyKeyboardMarkup:
@@ -44,16 +37,13 @@ def get_content_keyboard(category_key: str | None = None) -> ReplyKeyboardMarkup
     Клавиатура навигации для контента.
     """
     builder = ReplyKeyboardBuilder()
-    
+
     if category_key:
         builder.button(text="🔙 Назад к списку")
-    
+
     builder.button(text="🏠 Главное меню")
-    
-    return builder.as_markup(
-        resize_keyboard=True,
-        one_time_keyboard=False
-    )
+
+    return builder.as_markup(resize_keyboard=True, one_time_keyboard=False)
 
 
 def get_close_keyboard() -> ReplyKeyboardMarkup:

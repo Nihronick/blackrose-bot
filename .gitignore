@@ -46,3 +46,30 @@ logs/
 # Bot data
 bot_data.db
 *.sqlite3
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Ruff
+.ruff_cache/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+settings.json
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Misc
+CACHEHDR.TAG
+0.15.4/
+
+# Logs
+logs/*.log
