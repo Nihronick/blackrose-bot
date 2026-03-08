@@ -1,11 +1,11 @@
 """
 BlackRose Mini App Backend - Clean API
 """
+
 import os
-import sys
 import re
+import sys
 from pathlib import Path
-from typing import Optional
 
 from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
@@ -16,7 +16,8 @@ sys.path.append(str(Path(__file__).parent))
 from guides import CONTENT, MAIN_CATEGORIES, SUBMENUS
 
 try:
-    from icons import get_icon, ALL_ICONS
+    from icons import ALL_ICONS, get_icon
+
     ICONS_AVAILABLE = True
 except ImportError:
     ICONS_AVAILABLE = False
@@ -35,7 +36,7 @@ app.add_middleware(
 guide_stats: dict[str, int] = {}
 
 
-def resolve_icon(icon_raw: Optional[str]) -> Optional[str]:
+def resolve_icon(icon_raw: str | None) -> str | None:
     """Конвертирует имя иконки в URL"""
     if not icon_raw or not ICONS_AVAILABLE:
         return None
@@ -60,6 +61,7 @@ def format_guide_text(text: str) -> str:
 
     # 1. Заменяем {{icon_name}} на inline <img>
     if ICONS_AVAILABLE:
+
         def replace_icon(match):
             icon_name = match.group(1).strip()
             try:
@@ -68,29 +70,25 @@ def format_guide_text(text: str) -> str:
                     return (
                         f'<img src="{icon_url}" alt="{icon_name}" '
                         f'class="inline-icon" '
-                        f'onerror="this.style.display=\'none\'">'
+                        f"onerror=\"this.style.display='none'\">"
                     )
             except Exception:
                 pass
             return ""
 
-        html_content = re.sub(
-            r'\{\{(\w+(?:\s+\w+)*)\}\}',
-            replace_icon,
-            html_content
-        )
+        html_content = re.sub(r"\{\{(\w+(?:\s+\w+)*)\}\}", replace_icon, html_content)
     else:
         # Убираем плейсхолдеры если иконки недоступны
-        html_content = re.sub(r'\{\{(\w+(?:\s+\w+)*)\}\}', '', html_content)
+        html_content = re.sub(r"\{\{(\w+(?:\s+\w+)*)\}\}", "", html_content)
 
     # 2. **text** → <strong> (inline)
-    html_content = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', html_content)
+    html_content = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", html_content)
 
     # 3. Переносы строк
-    html_content = html_content.replace('\n', '<br>')
+    html_content = html_content.replace("\n", "<br>")
 
     # 4. Убираем лишние <br> подряд (больше 2)
-    html_content = re.sub(r'(<br>\s*){3,}', '<br><br>', html_content)
+    html_content = re.sub(r"(<br>\s*){3,}", "<br><br>", html_content)
 
     return html_content
 
@@ -98,6 +96,7 @@ def format_guide_text(text: str) -> str:
 # ═══════════════════════════════════════
 # ROUTES
 # ═══════════════════════════════════════
+
 
 @app.get("/")
 async def root():
@@ -116,12 +115,9 @@ def get_categories():
         title = data["title"] if isinstance(data, dict) else data
         icon_raw = data.get("icon") if isinstance(data, dict) else None
 
-        categories.append({
-            "key": key,
-            "title": title,
-            "icon": resolve_icon(icon_raw),
-            "count": len(SUBMENUS.get(key, []))
-        })
+        categories.append(
+            {"key": key, "title": title, "icon": resolve_icon(icon_raw), "count": len(SUBMENUS.get(key, []))}
+        )
     return {"categories": categories}
 
 
@@ -142,24 +138,23 @@ async def get_category(category_key: str):
 
         # Чистое превью без {{icon}} плейсхолдеров
         raw_preview = guide.get("text", "")[:150]
-        clean_preview = re.sub(r'\{\{.*?\}\}', '', raw_preview).strip()
-        clean_preview = re.sub(r'\*\*(.+?)\*\*', r'\1', clean_preview)
+        clean_preview = re.sub(r"\{\{.*?\}\}", "", raw_preview).strip()
+        clean_preview = re.sub(r"\*\*(.+?)\*\*", r"\1", clean_preview)
 
-        items.append({
-            "key": key,
-            "title": title,
-            "icon": resolve_icon(icon_raw),
-            "preview": clean_preview + "..." if clean_preview else "",
-            "has_photo": bool(guide.get("photo")),
-        })
+        items.append(
+            {
+                "key": key,
+                "title": title,
+                "icon": resolve_icon(icon_raw),
+                "preview": clean_preview + "..." if clean_preview else "",
+                "has_photo": bool(guide.get("photo")),
+            }
+        )
 
     cat_data = MAIN_CATEGORIES.get(category_key, {})
     category_title = cat_data["title"] if isinstance(cat_data, dict) else cat_data
 
-    return {
-        "category": {"key": category_key, "title": category_title},
-        "items": items
-    }
+    return {"category": {"key": category_key, "title": category_title}, "items": items}
 
 
 @app.get("/api/guide/{guide_key}")
@@ -207,20 +202,23 @@ async def search_guides(q: str = Query(min_length=2)):
         if query in key.lower() or query in title.lower() or query in text:
             icon_raw = guide.get("icon")
             raw_preview = guide.get("text", "")[:150]
-            clean_preview = re.sub(r'\{\{.*?\}\}', '', raw_preview).strip()
+            clean_preview = re.sub(r"\{\{.*?\}\}", "", raw_preview).strip()
 
-            results.append({
-                "key": key,
-                "title": title,
-                "icon": resolve_icon(icon_raw),
-                "preview": clean_preview + "...",
-            })
+            results.append(
+                {
+                    "key": key,
+                    "title": title,
+                    "icon": resolve_icon(icon_raw),
+                    "preview": clean_preview + "...",
+                }
+            )
 
     return {"results": results[:10]}
 
 
 # Frontend
 frontend_dir = Path(__file__).parent.parent / "frontend"
+
 
 @app.get("/frontend")
 async def serve_index():
@@ -239,9 +237,4 @@ if __name__ == "__main__":
     print(f"Starting on {host}:{port}")
     print(f"Icons: {len(ALL_ICONS)} loaded" if ICONS_AVAILABLE else "No icons")
 
-    uvicorn.run(
-        "main:app",
-        host=host,
-        port=port,
-        reload=os.getenv("RAILWAY_ENVIRONMENT") is None
-    )
+    uvicorn.run("main:app", host=host, port=port, reload=os.getenv("RAILWAY_ENVIRONMENT") is None)

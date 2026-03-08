@@ -1,52 +1,53 @@
-from icons import get_icon, list_all_icons, get_stats
+from icons import get_icon, get_stats
+
+
 def format_guide_text(text: str) -> str:
     """
     Заменяет плейсхолдеры иконок на HTML img теги
     Пример: {{promo_ether}} → <img src="URL" width="20">
     """
-    from icons import get_icon
-    
     # Находим все плейсхолдеры {{icon_name}}
     import re
-    
+
+    from icons import get_icon
+
     def replace_icon(match):
         icon_name = match.group(1)
         icon_url = get_icon(icon_name)
         return f'<img src="{icon_url}" alt="{icon_name}" width="20" height="20" style="vertical-align: middle; margin: 0 4px;">'
-    
+
     # Заменяем {{icon_name}} на img теги
-    formatted_text = re.sub(r'\{\{(\w+)\}\}', replace_icon, text)
-    
+    formatted_text = re.sub(r"\{\{(\w+)\}\}", replace_icon, text)
+
     # Дополнительно: заменяем переносы строк на <br>
-    formatted_text = formatted_text.replace('\n', '<br>')
-    
+    formatted_text = formatted_text.replace("\n", "<br>")
+
     # Заменяем **text** на <strong>text</strong>
-    formatted_text = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', formatted_text)
-    
+    formatted_text = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", formatted_text)
+
     # Заменяем *text* на <em>text</em>
-    formatted_text = re.sub(r'\*(.+?)\*', r'<em>\1</em>', formatted_text)
-    
+    formatted_text = re.sub(r"\*(.+?)\*", r"<em>\1</em>", formatted_text)
+
     return formatted_text
+
+
 # ═══════════════════════════════════════════════════════
 # 📋 КАТЕГОРИИ (с иконками)
 # ═══════════════════════════════════════════════════════
 MAIN_CATEGORIES = {
-    "cat_promoutes": {
-        "title": "Промоуты",
-        "icon": get_icon("promo_nox")
-    },
+    "cat_promoutes": {"title": "Промоуты", "icon": get_icon("promo_nox")},
     "info_general": {
         "title": "Общая информация",
-        "icon": "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/info_general.png"
+        "icon": "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/info_general.png",
     },
     "adv_adventures": {
         "title": "Приключения",
-        "icon": "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/adv_adventures.png"
+        "icon": "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/adv_adventures.png",
     },
     "guild_guild": {
         "title": "Гильдия",
-        "icon": "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/guild_guild.png"
-    }
+        "icon": "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/guild_guild.png",
+    },
 }
 
 # ═══════════════════════════════════════════════════════
@@ -68,25 +69,81 @@ SUBMENUS = {
         ("promo_gigalor", "Гигалор", get_icon("promo_gigalor")),
     ],
     "info_general": [
-        ("info_event", "Что покупать на ивенте?", "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/info_event.png"),
-        ("info_rage", "Как играть с Яростью?", "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/info_rage.png"),
-        ("info_ads", "Просмотр рекламы", "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/info_ads.png"),
-        ("info_pets", "Прокачка спутников", "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/info_pets.png"),
-        ("info_sword", "Меч душ и гравировка", "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/info_sword.png"),
-        ("info_farm", "Фарм этапов", "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/info_farm.png"),
-        ("info_spirit", "Духи/Spirits", "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/info_spirit.png"),
+        (
+            "info_event",
+            "Что покупать на ивенте?",
+            "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/info_event.png",
+        ),
+        (
+            "info_rage",
+            "Как играть с Яростью?",
+            "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/info_rage.png",
+        ),
+        (
+            "info_ads",
+            "Просмотр рекламы",
+            "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/info_ads.png",
+        ),
+        (
+            "info_pets",
+            "Прокачка спутников",
+            "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/info_pets.png",
+        ),
+        (
+            "info_sword",
+            "Меч душ и гравировка",
+            "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/info_sword.png",
+        ),
+        (
+            "info_farm",
+            "Фарм этапов",
+            "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/info_farm.png",
+        ),
+        (
+            "info_spirit",
+            "Духи/Spirits",
+            "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/info_spirit.png",
+        ),
     ],
     "adv_adventures": [
-        ("adv_cave", "Учебная пещера", "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/adv_cave.png"),
-        ("adv_rift", "Межпространственный разлом", "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/adv_rift.png"),
-        ("adv_shelter", "Приют Спящего Пламени", "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/adv_shelter.png"),
-        ("adv_mind", "Золотой рудник", "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/adv_mind.png"),
-        ("adv_forest", "Лес циркуляции", "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/adv_forest.png"),
+        (
+            "adv_cave",
+            "Учебная пещера",
+            "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/adv_cave.png",
+        ),
+        (
+            "adv_rift",
+            "Межпространственный разлом",
+            "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/adv_rift.png",
+        ),
+        (
+            "adv_shelter",
+            "Приют Спящего Пламени",
+            "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/adv_shelter.png",
+        ),
+        (
+            "adv_mind",
+            "Золотой рудник",
+            "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/adv_mind.png",
+        ),
+        (
+            "adv_forest",
+            "Лес циркуляции",
+            "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/adv_forest.png",
+        ),
     ],
     "guild_guild": [
-        ("guild_wyvern", "Виверна", "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/guild_wyvern.png"),
-        ("guild_cooking", "Приготовление блюд", "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/guild_cooking.png"),
-    ]
+        (
+            "guild_wyvern",
+            "Виверна",
+            "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/guild_wyvern.png",
+        ),
+        (
+            "guild_cooking",
+            "Приготовление блюд",
+            "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/guild_cooking.png",
+        ),
+    ],
 }
 
 # ═══════════════════════════════════════════════════════
@@ -118,9 +175,8 @@ CONTENT = {
 • Фокус на атаке и критическом уроне""",
         "photo": [],  # 🔽 ЗАМЕНИТЕ НА URL: ["https://i.imgur.com/abc123.png"]
         "video": None,
-        "document": None
+        "document": None,
     },
-    
     "promo_black_mithril": {
         "title": "Чёрный Мифрил | Black Mythril",
         "text": """**Гайд на Чёрный Мифрил** 
@@ -147,9 +203,8 @@ CONTENT = {
 • С Бредом у Sala можно больше E1""",
         "photo": [],  # 🔽 Добавьте URL
         "video": None,
-        "document": None
+        "document": None,
     },
-    
     "promo_demonite": {
         "title": "Демонит | Demon Metal",
         "text": """ **Гайд на Демонит** 
@@ -175,9 +230,8 @@ CONTENT = {
 • Вода, Камень, Огонь""",
         "photo": [],
         "video": None,
-        "document": None
+        "document": None,
     },
-    
     "promo_dragonos": {
         "title": "Драгонос | Dragonos",
         "text": """ **Гайд на Драгонос** 
@@ -207,9 +261,8 @@ CONTENT = {
 • Огня и камня: 3-4к""",
         "photo": [],
         "video": None,
-        "document": None
+        "document": None,
     },
-    
     "promo_blood": {
         "title": "Кровь Великих | Ragna Blood",
         "text": """ **Гайд на Кровь Великих** 
@@ -239,9 +292,8 @@ CONTENT = {
 • Вода, Камень, Огонь""",
         "photo": [],
         "video": None,
-        "document": None
+        "document": None,
     },
-    
     "promo_frost": {
         "title": "Иней Войны | War Frost",
         "text": """ **Гайд на Иней Войны** 
@@ -271,9 +323,8 @@ CONTENT = {
 • Вода, Земля, Огонь""",
         "photo": [],
         "video": None,
-        "document": None
+        "document": None,
     },
-    
     "promo_nox": {
         "title": "Тёмный Нокс | Dark Nox",
         "text": """ **Гайд на Тёмный Нокс** 
@@ -304,9 +355,8 @@ CONTENT = {
 На этом промоуте игроки могут делать больший упор в меч или в класс. Если у вас условный сид, то меч будет хуже. Также с реликвиями: если меньше крита, то больше атаки. Не обязательно делать всё так же!""",
         "photo": [],
         "video": None,
-        "document": None
+        "document": None,
     },
-    
     "promo_abyss": {
         "title": "Синяя Бездна | Blue Abyss",
         "text": """ **Гайд на Синюю Бездну** 
@@ -337,9 +387,8 @@ CONTENT = {
 • Вода, Камень, Огонь""",
         "photo": [],
         "video": None,
-        "document": None
+        "document": None,
     },
-    
     "promo_infinat": {
         "title": "Инфинат | Inflnat",
         "text": """ **Гайд на Инфинат** 
@@ -375,9 +424,8 @@ CONTENT = {
 У кого-то может быть наоборот: есть нова, но нет фулл меча""",
         "photo": [],
         "video": None,
-        "document": None
+        "document": None,
     },
-    
     "promo_cyclone": {
         "title": "Циклон | Ciclos",
         "text": """ **Гайд на Циклон** 
@@ -408,9 +456,8 @@ CONTENT = {
 • Вода, Камень, Огонь""",
         "photo": [],
         "video": None,
-        "document": None
+        "document": None,
     },
-    
     "promo_ancient": {
         "title": "Эйшенткенаин | Ancient Canine",
         "text": """ **Гайд на Эйшенткенаин** 
@@ -449,9 +496,8 @@ CONTENT = {
 • Земли: 35-40а (если используете Охоту на демонов)""",
         "photo": [],
         "video": None,
-        "document": None
+        "document": None,
     },
-    
     "promo_gigalor": {
         "title": "Гигалор | Gigarock",
         "text": """ **Гайд на Гигалор** 
@@ -483,9 +529,8 @@ CONTENT = {
 Статы максимально примерные! У кого-то может не быть 8 фамильяра или высокого уровня 🔥 или других баффающих навыков.""",
         "photo": [],
         "video": None,
-        "document": None
+        "document": None,
     },
-    
     # 📜 ОБЩАЯ ИНФОРМАЦИЯ
     "info_event": {
         "title": "Что покупать на ивенте?",
@@ -509,9 +554,8 @@ CONTENT = {
 Не стоит менять на АЛМАЗЫ, только покупка по приоритету!""",
         "photo": [],
         "video": None,
-        "document": None
+        "document": None,
     },
-    
     "info_rage": {
         "title": "Как играть с Яростью?",
         "text": """😤 **Как играть с Яростью?**
@@ -525,9 +569,8 @@ CONTENT = {
 • Комбинируйте с другими навыками""",
         "photo": [],
         "video": [],  # 🔽 Добавьте URL видео
-        "document": None
+        "document": None,
     },
-    
     "info_ads": {
         "title": "Просмотр рекламы",
         "text": """📺 **Просмотр рекламы**
@@ -544,9 +587,8 @@ CONTENT = {
 Можно смотреть рекламу без VPN, но с ограничениями""",
         "photo": [],
         "video": None,
-        "document": None
+        "document": None,
     },
-    
     "info_pets": {
         "title": "Прокачка спутников",
         "text": """🐾 **Прокачка спутников**
@@ -563,9 +605,8 @@ CONTENT = {
 • Следуйте приоритетам из гайдов""",
         "photo": [],
         "video": None,
-        "document": None
+        "document": None,
     },
-    
     "info_sword": {
         "title": "Меч душ и гравировка",
         "text": """⚔️ **Меч душ и гравировка**
@@ -595,9 +636,8 @@ CONTENT = {
 Оружие Души может отдавать предпочтение критическим блокам""",
         "photo": [],
         "video": None,
-        "document": []  # 🔽 Добавьте URL документов
+        "document": [],  # 🔽 Добавьте URL документов
     },
-    
     "info_farm": {
         "title": "Фарм этапов",
         "text": """💰 **Фарм этапов**
@@ -627,9 +667,8 @@ CONTENT = {
 • Нельзя выбирать где фармить""",
         "photo": [],
         "video": None,
-        "document": None
+        "document": None,
     },
-    
     "info_spirit": {
         "title": "Духи/Spirits",
         "text": """{{spirit_ark}} **Духи - Оптимизация**
@@ -676,9 +715,8 @@ Nerh, Ark, Boo, Kart, Sala, Luga
 После 12/12 Мифических духов выбирайте вариант с 4 равными полосами. Статистика повышается на 20%!""",
         "photo": [],
         "video": None,
-        "document": None
+        "document": None,
     },
-    
     # 🌳 ПРИКЛЮЧЕНИЯ
     "adv_cave": {
         "title": "Учебная пещера",
@@ -693,9 +731,8 @@ Nerh, Ark, Boo, Kart, Sala, Luga
 • Простые враги""",
         "photo": [],
         "video": None,
-        "document": None
+        "document": None,
     },
-    
     "adv_rift": {
         "title": "Межпространственный разлом",
         "text": """🌀 **Межпространственный разлом**
@@ -709,9 +746,8 @@ Nerh, Ark, Boo, Kart, Sala, Luga
 • Сложные враги""",
         "photo": [],
         "video": None,
-        "document": None
+        "document": None,
     },
-    
     "adv_shelter": {
         "title": "Приют Спящего Пламени",
         "text": """🔥 **Приют Спящего Пламени**
@@ -725,9 +761,8 @@ Nerh, Ark, Boo, Kart, Sala, Luga
 • Ценные ресурсы""",
         "photo": [],
         "video": None,
-        "document": None
+        "document": None,
     },
-    
     "adv_mind": {
         "title": "Золотой рудник",
         "text": """🪙 **Золотой рудник**
@@ -757,9 +792,8 @@ Nerh, Ark, Boo, Kart, Sala, Luga
 Используйте обычную ежедневную прокрутку кубов - получаете больше кубов от мобов""",
         "photo": [],
         "video": None,
-        "document": None
+        "document": None,
     },
-    
     "adv_forest": {
         "title": "Лес циркуляции",
         "text": """🌲 **Лес циркуляции**
@@ -773,9 +807,8 @@ Nerh, Ark, Boo, Kart, Sala, Luga
 • Используйте правильную стихию""",
         "photo": [],
         "video": None,
-        "document": None
+        "document": None,
     },
-    
     # 🛡 ГИЛЬДИЯ
     "guild_wyvern": {
         "title": "Виверна",
@@ -801,9 +834,8 @@ Nerh, Ark, Boo, Kart, Sala, Luga
 • Координируйтесь с гильдией""",
         "photo": [],
         "video": None,
-        "document": None
+        "document": None,
     },
-    
     "guild_cooking": {
         "title": "Приготовление блюд",
         "text": """🍲 **Приготовление блюд**
@@ -837,9 +869,10 @@ Nerh, Ark, Boo, Kart, Sala, Luga
 Следуйте указаниям ГМ каждый сезон!""",
         "photo": [],
         "video": None,
-        "document": None
+        "document": None,
     },
 }
+
 
 # ═══════════════════════════════════════════════════════
 # 📊 СТАТИСТИКА
@@ -851,7 +884,7 @@ def get_stats():
     total_photos = sum(len(guide.get("photo", []) or []) for guide in CONTENT.values())
     total_videos = sum(len(guide.get("video", []) or []) for guide in CONTENT.values())
     total_documents = sum(len(guide.get("document", []) or []) for guide in CONTENT.values())
-    
+
     return {
         "total_guides": total_guides,
         "total_categories": total_categories,
@@ -861,5 +894,3 @@ def get_stats():
         "guides_with_photos": sum(1 for guide in CONTENT.values() if guide.get("photo")),
         "guides_with_videos": sum(1 for guide in CONTENT.values() if guide.get("video")),
     }
-
-    

@@ -5,10 +5,9 @@ from pathlib import Path
 
 from aiogram import Bot, Dispatcher
 from aiogram.fsm.storage.memory import MemoryStorage
-from loguru import logger
-
 from config import ACCESS_MODE, API_TOKEN
 from handlers import content_router, errors_router, helpers_router, menu_router
+from loguru import logger
 from middleware import AccessMiddleware
 
 # ✅ Создаём папку для логов

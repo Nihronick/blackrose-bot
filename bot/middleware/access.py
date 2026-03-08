@@ -4,7 +4,6 @@ from typing import Any
 
 from aiogram.dispatcher.middlewares.base import BaseMiddleware
 from aiogram.types import CallbackQuery, Message
-
 from config import ACCESS_MODE, ALLOWED_CHATS, ALLOWED_USERS
 
 logger = logging.getLogger(__name__)

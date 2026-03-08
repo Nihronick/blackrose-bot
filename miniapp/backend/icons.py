@@ -28,7 +28,6 @@ CLASS_ETC = {
     "class_terra": _url("class_etc/Tera.png"),
     "class_nova": _url("class_etc/Nova.png"),
     "class_sid": _url("class_etc/Seed.png"),
-
     # Мечи — пробелы теперь безопасно кодируются
     "sword_m1": _url("class_etc/m1 sword.png"),
     "sword_opp": _url("class_etc/orr.png"),
@@ -36,12 +35,10 @@ CLASS_ETC = {
     "sword_awaken": _url("class_etc/awaken.png"),
     "sword_absolutev1": _url("class_etc/AbsoluteV1.png"),
     "sword_absolutev2": _url("class_etc/AbsoluteV2.gif"),
-
     # Реликвии
     "relic_weapon": _url("class_etc/relic_weapon.png"),
     "relic_armor": _url("class_etc/relic_armor.png"),
     "relic_accessory": _url("class_etc/relic_accessory.png"),
-
     # Другое
     "stage": _url("class_etc/stage.png"),
     "ds": _url("class_etc/ds.png"),
@@ -116,13 +113,11 @@ SPIRIT = {
     "spirit_luga": _url("spirits/Luga.png"),
     "spirit_ark": _url("spirits/Ark.png"),
     "spirit_nerh": _url("spirits/Nerh.png"),
-
     # Фамильяры — папка "spirit" (⚠️ другая папка!)
     "familiar_hikuna": _url("spirit/familiar_hikuna.png"),
     "familiar_hikurion": _url("spirit/familiar_hikurion.png"),
     "familiar_tikuna": _url("spirit/familiar_tikuna.png"),
     "familiar_a": _url("spirit/familiar_a.png"),
-
     # Звёзды
     "star_1": _url("spirit/star_1.png"),
     "star_3": _url("spirit/star_3.png"),
@@ -187,6 +182,7 @@ ALL_ICONS = {
 # ═══════════════════════════════════════════════════════
 # HELPER ФУНКЦИИ
 # ═══════════════════════════════════════════════════════
+
 
 def get_icon(name: str, default: str = None) -> str:
     """Получить URL иконки по имени. Возвращает None если не найдена."""

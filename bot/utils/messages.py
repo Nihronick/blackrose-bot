@@ -4,7 +4,6 @@ import logging
 from aiogram import Bot, types
 from aiogram.exceptions import TelegramBadRequest
 from aiogram.fsm.context import FSMContext
-
 from config import DELETE_DELAY
 
 logger = logging.getLogger(__name__)
