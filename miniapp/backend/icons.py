@@ -1,184 +1,183 @@
 """
 BlackRose Mini App - Управление иконками
-Организованы по 4 категориям для удобного использования
 """
 
+from urllib.parse import quote
+
 # ═══════════════════════════════════════════════════════
-# 📁 БАЗОВЫЙ URL ДЛЯ ИЗОБРАЖЕНИЙ
+# БАЗОВЫЙ URL ДЛЯ ИЗОБРАЖЕНИЙ
 # ═══════════════════════════════════════════════════════
 BASE_URL = "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons"
 
+
+def _url(path: str) -> str:
+    """Безопасное формирование URL — кодирует пробелы и спецсимволы"""
+    # Разбиваем путь на части и кодируем каждую
+    parts = path.split("/")
+    encoded_parts = [quote(part, safe="") for part in parts]
+    return f"{BASE_URL}/{'/'.join(encoded_parts)}"
+
+
 # ═══════════════════════════════════════════════════════
-# 🎓 CLASS_ETC (Классы, мечи, реликвии и прочее)
+# CLASS_ETC (Классы, мечи, реликвии и прочее)
 # ═══════════════════════════════════════════════════════
 CLASS_ETC = {
     # Классы
-    "class_s": f"{BASE_URL}/class_etc/class_s.png",
-    "class_c": f"{BASE_URL}/class_etc/class_c.png",
-    "class_b": f"{BASE_URL}/class_etc/class_b.png",
-    "class_a": f"{BASE_URL}/class_etc/class_a.png",
-    "class_terra": f"{BASE_URL}/class_etc/class_terra.png",
-    "class_nova": f"{BASE_URL}/class_etc/class_nova.png",
-    "class_sid": f"{BASE_URL}/class_etc/class_sid.png",
-    "class_last": f"{BASE_URL}/class_etc/class_last.png",
-    
-    # Мечи
-    "sword_m1": f"{BASE_URL}/class_etc/sword_m1.png",
-    "sword_opp": f"{BASE_URL}/class_etc/sword_opp.png",
-    "sword_orb": f"{BASE_URL}/class_etc/sword_orb.png",
-    "sword_ancient": f"{BASE_URL}/class_etc/sword_ancient.png",
-    "sword_eternal": f"{BASE_URL}/class_etc/sword_eternal.png",
-    "sword_dream": f"{BASE_URL}/class_etc/sword_dream.png",
-    
+    "class_c18": _url("class_etc/c18.png"),
+    "class_c19": _url("class_etc/c19.png"),
+    "class_terra": _url("class_etc/Tera.png"),
+    "class_nova": _url("class_etc/Nova.png"),
+    "class_sid": _url("class_etc/Seed.png"),
+
+    # Мечи — пробелы теперь безопасно кодируются
+    "sword_m1": _url("class_etc/m1 sword.png"),
+    "sword_opp": _url("class_etc/orr.png"),
+    "sword_orb": _url("class_etc/orb.png"),
+    "sword_awaken": _url("class_etc/awaken.png"),
+    "sword_absolutev1": _url("class_etc/AbsoluteV1.png"),
+    "sword_absolutev2": _url("class_etc/AbsoluteV2.gif"),
+
     # Реликвии
-    "relic_weapon": f"{BASE_URL}/class_etc/relic_weapon.png",
-    "relic_armor": f"{BASE_URL}/class_etc/relic_armor.png",
-    "relic_accessory": f"{BASE_URL}/class_etc/relic_accessory.png",
-    
+    "relic_weapon": _url("class_etc/relic_weapon.png"),
+    "relic_armor": _url("class_etc/relic_armor.png"),
+    "relic_accessory": _url("class_etc/relic_accessory.png"),
+
     # Другое
-    "stage": f"{BASE_URL}/class_etc/stage.png",
-    "ds": f"{BASE_URL}/class_etc/ds.png",
-    "attack": f"{BASE_URL}/class_etc/attack.png",
-    "crit_damage": f"{BASE_URL}/class_etc/crit_damage.png",
-    "hp": f"{BASE_URL}/class_etc/hp.png",
-    "rxp": f"{BASE_URL}/class_etc/rxp.png",
-    "check": f"{BASE_URL}/class_etc/check.png",
-    "cross": f"{BASE_URL}/class_etc/cross.png",
-    "warning": f"{BASE_URL}/class_etc/warning.png",
-    "info": f"{BASE_URL}/class_etc/info.png",
-    "star": f"{BASE_URL}/class_etc/star.png",
-    "diamond": f"{BASE_URL}/class_etc/diamond.png",
-    "gold": f"{BASE_URL}/class_etc/gold.png",
-    "gem": f"{BASE_URL}/class_etc/gem.png",
+    "stage": _url("class_etc/stage.png"),
+    "ds": _url("class_etc/ds.png"),
+    "attack": _url("class_etc/attack.png"),
+    "crit_damage": _url("class_etc/crit_damage.png"),
+    "hp": _url("class_etc/hp.png"),
+    "rxp": _url("class_etc/rxp.png"),
+    "check": _url("class_etc/check.png"),
+    "cross": _url("class_etc/cross.png"),
+    "warning": _url("class_etc/warning.png"),
+    "info": _url("class_etc/info.png"),
+    "star": _url("class_etc/star.png"),
+    "diamond": _url("class_etc/diamond.png"),
+    "gold": _url("class_etc/gold.png"),
+    "gem": _url("class_etc/gem.png"),
 }
 
 # ═══════════════════════════════════════════════════════
-# ⚔️ PROMOTION (Промоуты)
+# PROMOTION (Промоуты)
 # ═══════════════════════════════════════════════════════
 PROMOTION = {
-    # Иконки промоутов
-    "promo_ether": f"{BASE_URL}/promotion/Ether.png",
-    "promo_black_mithril": f"{BASE_URL}/promotion/Black Mythril.png",
-    "promo_demonite": f"{BASE_URL}/promotion/Demon Metal.png",
-    "promo_dragonos": f"{BASE_URL}/promotion/Dragonos.png",
-    "promo_blood": f"{BASE_URL}/promotion/Ragnablood.png",
-    "promo_frost": f"{BASE_URL}/promotion/Warfrost.png",
-    "promo_nox": f"{BASE_URL}/promotion/Dark Nox.png",
-    "promo_abyss": f"{BASE_URL}/promotion/Blue Abyss.png",
-    "promo_infinat": f"{BASE_URL}/promotion/Infinaut.png",
-    "promo_cyclone": f"{BASE_URL}/promotion/Cyclos.png",
-    "promo_ancient": f"{BASE_URL}/promotion/Ancient Canine.png",
-    "promo_gigalor": f"{BASE_URL}/promotion/Gigarock.png",
-    
-    # Иконка категории промоутов
-    "cat_promoutes": f"{BASE_URL}/promotion/cat_promoutes.png",
+    "promo_ether": _url("promotion/Ether.png"),
+    "promo_black_mithril": _url("promotion/Black Mythril.png"),
+    "promo_demonite": _url("promotion/Demon Metal.png"),
+    "promo_dragonos": _url("promotion/Dragonos.png"),
+    "promo_blood": _url("promotion/Ragnablood.png"),
+    "promo_frost": _url("promotion/Warfrost.png"),
+    "promo_nox": _url("promotion/Dark Nox.png"),
+    "promo_abyss": _url("promotion/Blue Abyss.png"),
+    "promo_infinat": _url("promotion/Infinaut.png"),
+    "promo_cyclone": _url("promotion/Cyclos.png"),
+    "promo_ancient": _url("promotion/Ancient Canine.png"),
+    "promo_gigalor": _url("promotion/Gigarock.png"),
+    "cat_promoutes": _url("promotion/cat_promoutes.png"),
 }
 
 # ═══════════════════════════════════════════════════════
-# ⚡ SKILLS (Навыки и камни)
+# SKILLS (Навыки и камни)
 # ═══════════════════════════════════════════════════════
 SKILLS = {
-    # Камни навыков
-    "skill_water": f"{BASE_URL}/skills/skill_water.png",
-    "skill_earth": f"{BASE_URL}/skills/skill_earth.png",
-    "skill_wind": f"{BASE_URL}/skills/skill_wind.png",
-    "skill_fire": f"{BASE_URL}/skills/skill_fire.png",
-    
-    # Навыки
-    "skill_meditation": f"{BASE_URL}/skills/skill_meditation.png",
-    "skill_hell_strike": f"{BASE_URL}/skills/skill_hell_strike.png",
-    "skill_rage": f"{BASE_URL}/skills/skill_rage.png",
-    "skill_elf_song": f"{BASE_URL}/skills/skill_elf_song.png",
-    "skill_war_wisdom": f"{BASE_URL}/skills/skill_war_wisdom.png",
-    
-    # Элементы
-    "element_fire": f"{BASE_URL}/skills/element_fire.png",
-    "element_earth": f"{BASE_URL}/skills/element_earth.png",
-    "element_wind": f"{BASE_URL}/skills/element_wind.png",
-    "element_water": f"{BASE_URL}/skills/element_water.png",
+    "skill_water": _url("skills/skill_water.png"),
+    "skill_earth": _url("skills/skill_earth.png"),
+    "skill_wind": _url("skills/skill_wind.png"),
+    "skill_fire": _url("skills/skill_fire.png"),
+    "skill_meditation": _url("skills/skill_meditation.png"),
+    "skill_hell_strike": _url("skills/skill_hell_strike.png"),
+    "skill_rage": _url("skills/skill_rage.png"),
+    "skill_elf_song": _url("skills/skill_elf_song.png"),
+    "skill_war_wisdom": _url("skills/skill_war_wisdom.png"),
+    "element_fire": _url("skills/element_fire.png"),
+    "element_earth": _url("skills/element_earth.png"),
+    "element_wind": _url("skills/element_wind.png"),
+    "element_water": _url("skills/element_water.png"),
 }
 
 # ═══════════════════════════════════════════════════════
-# 👻 SPIRIT (Духи и фамильяры) - ИСПРАВЛЕНО!
+# SPIRIT (Духи и фамильяры)
+# ⚠️ Проверь в GitHub: папка "spirits" или "spirit"?
 # ═══════════════════════════════════════════════════════
-SPIRIT = {  # Было SPIRIT_FAMILIARS
-    # Духи (Spirits)
-    "spirit_noah": f"{BASE_URL}/spirit/spirit_noah.png",
-    "spirit_loar": f"{BASE_URL}/spirit/spirit_loar.png",
-    "spirit_sala": f"{BASE_URL}/spirit/spirit_sala.png",
-    "spirit_mum": f"{BASE_URL}/spirit/spirit_mum.png",
-    "spirit_bo": f"{BASE_URL}/spirit/spirit_bo.png",
-    "spirit_radon": f"{BASE_URL}/spirit/spirit_radon.png",
-    "spirit_zappy": f"{BASE_URL}/spirit/spirit_zappy.png",
-    "spirit_kart": f"{BASE_URL}/spirit/spirit_kart.png",
-    "spirit_herh": f"{BASE_URL}/spirit/spirit_herh.png",
-    "spirit_todd": f"{BASE_URL}/spirit/spirit_todd.png",
-    "spirit_luga": f"{BASE_URL}/spirit/spirit_luga.png",
-    "spirit_ark": f"{BASE_URL}/spirit/spirit_ark.png",
-    "spirit_nerh": f"{BASE_URL}/spirit/spirit_nerh.png",
-    "spirit_boo": f"{BASE_URL}/spirit/spirit_boo.png",
-    
-    # Фамильяры
-    "familiar_hikuna": f"{BASE_URL}/spirit/familiar_hikuna.png",
-    "familiar_hikurion": f"{BASE_URL}/spirit/familiar_hikurion.png",
-    "familiar_tikuna": f"{BASE_URL}/spirit/familiar_tikuna.png",
-    "familiar_a": f"{BASE_URL}/spirit/familiar_a.png",
-    
-    # Звёзды и уровни
-    "star_1": f"{BASE_URL}/spirit/star_1.png",
-    "star_3": f"{BASE_URL}/spirit/star_3.png",
-    "star_5": f"{BASE_URL}/spirit/star_5.png",
-    "star_6": f"{BASE_URL}/spirit/star_6.png",
-    "star_7": f"{BASE_URL}/spirit/star_7.png",
-    "star_8": f"{BASE_URL}/spirit/star_8.png",
-    "awaken_e": f"{BASE_URL}/spirit/awaken_e.png",
-    "awaken_a": f"{BASE_URL}/spirit/awaken_a.png",
+SPIRIT = {
+    # Духи — папка "spirits"
+    "spirit_noah": _url("spirits/Noah.png"),
+    "spirit_loar": _url("spirits/Loar.png"),
+    "spirit_sala": _url("spirits/Sala.png"),
+    "spirit_mum": _url("spirits/Mum.png"),
+    "spirit_bo": _url("spirits/Bo.png"),
+    "spirit_radon": _url("spirits/Radon.png"),
+    "spirit_zappy": _url("spirits/Zappy.png"),
+    "spirit_kart": _url("spirits/Kart.png"),
+    "spirit_herh": _url("spirits/Herh.png"),
+    "spirit_todd": _url("spirits/Todd.png"),
+    "spirit_luga": _url("spirits/Luga.png"),
+    "spirit_ark": _url("spirits/Ark.png"),
+    "spirit_nerh": _url("spirits/Nerh.png"),
+
+    # Фамильяры — папка "spirit" (⚠️ другая папка!)
+    "familiar_hikuna": _url("spirit/familiar_hikuna.png"),
+    "familiar_hikurion": _url("spirit/familiar_hikurion.png"),
+    "familiar_tikuna": _url("spirit/familiar_tikuna.png"),
+    "familiar_a": _url("spirit/familiar_a.png"),
+
+    # Звёзды
+    "star_1": _url("spirit/star_1.png"),
+    "star_3": _url("spirit/star_3.png"),
+    "star_5": _url("spirit/star_5.png"),
+    "star_6": _url("spirit/star_6.png"),
+    "star_7": _url("spirit/star_7.png"),
+    "star_8": _url("spirit/star_8.png"),
+    "awaken_e": _url("spirit/awaken_e.png"),
+    "awaken_a": _url("spirit/awaken_a.png"),
 }
 
 # ═══════════════════════════════════════════════════════
-# 📂 КАТЕГОРИИ ИНФОРМАЦИИ
+# КАТЕГОРИИ ИНФОРМАЦИИ
 # ═══════════════════════════════════════════════════════
 INFO_CATEGORIES = {
-    "info_general": f"{BASE_URL}/info_general.png",
-    "info_event": f"{BASE_URL}/info_event.png",
-    "info_rage": f"{BASE_URL}/info_rage.png",
-    "info_ads": f"{BASE_URL}/info_ads.png",
-    "info_pets": f"{BASE_URL}/info_pets.png",
-    "info_sword": f"{BASE_URL}/info_sword.png",
-    "info_farm": f"{BASE_URL}/info_farm.png",
-    "info_spirit": f"{BASE_URL}/info_spirit.png",
-    "info_build": f"{BASE_URL}/info_build.png",
+    "info_general": _url("info_general.png"),
+    "info_event": _url("info_event.png"),
+    "info_rage": _url("info_rage.png"),
+    "info_ads": _url("info_ads.png"),
+    "info_pets": _url("info_pets.png"),
+    "info_sword": _url("info_sword.png"),
+    "info_farm": _url("info_farm.png"),
+    "info_spirit": _url("info_spirit.png"),
+    "info_build": _url("info_build.png"),
 }
 
 # ═══════════════════════════════════════════════════════
-# 🌳 ПРИКЛЮЧЕНИЯ
+# ПРИКЛЮЧЕНИЯ
 # ═══════════════════════════════════════════════════════
 ADVENTURES = {
-    "adv_adventures": f"{BASE_URL}/adv_adventures.png",
-    "adv_cave": f"{BASE_URL}/adv_cave.png",
-    "adv_rift": f"{BASE_URL}/adv_rift.png",
-    "adv_shelter": f"{BASE_URL}/adv_shelter.png",
-    "adv_mind": f"{BASE_URL}/adv_mind.png",
-    "adv_forest": f"{BASE_URL}/adv_forest.png",
+    "adv_adventures": _url("adv_adventures.png"),
+    "adv_cave": _url("adv_cave.png"),
+    "adv_rift": _url("adv_rift.png"),
+    "adv_shelter": _url("adv_shelter.png"),
+    "adv_mind": _url("adv_mind.png"),
+    "adv_forest": _url("adv_forest.png"),
 }
 
 # ═══════════════════════════════════════════════════════
-# 🛡 ГИЛЬДИЯ
+# ГИЛЬДИЯ
 # ═══════════════════════════════════════════════════════
 GUILD = {
-    "guild_guild": f"{BASE_URL}/guild_guild.png",
-    "guild_wyvern": f"{BASE_URL}/guild_wyvern.png",
-    "guild_cooking": f"{BASE_URL}/guild_cooking.png",
+    "guild_guild": _url("guild_guild.png"),
+    "guild_wyvern": _url("guild_wyvern.png"),
+    "guild_cooking": _url("guild_cooking.png"),
 }
 
 # ═══════════════════════════════════════════════════════
-# 📦 ВСЕ ИКОНКИ (объединённый словарь)
+# ВСЕ ИКОНКИ
 # ═══════════════════════════════════════════════════════
 ALL_ICONS = {
     **CLASS_ETC,
     **PROMOTION,
     **SKILLS,
-    **SPIRIT,  # Было SPIRIT_FAMILIARS
+    **SPIRIT,
     **INFO_CATEGORIES,
     **ADVENTURES,
     **GUILD,
@@ -186,38 +185,21 @@ ALL_ICONS = {
 
 
 # ═══════════════════════════════════════════════════════
-# 🔧 HELPER ФУНКЦИИ
+# HELPER ФУНКЦИИ
 # ═══════════════════════════════════════════════════════
 
 def get_icon(name: str, default: str = None) -> str:
-    """
-    Получить URL иконки по имени
-    
-    Args:
-        name: Имя иконки
-        default: Значение по умолчанию если не найдена
-    
-    Returns:
-        URL иконки или default
-    """
-    return ALL_ICONS.get(name, default or f"{BASE_URL}/default.png")
+    """Получить URL иконки по имени. Возвращает None если не найдена."""
+    return ALL_ICONS.get(name, default)
 
 
 def get_category_icons(category: str) -> dict:
-    """
-    Получить все иконки категории
-    
-    Args:
-        category: Название категории
-    
-    Returns:
-        Словарь с иконками категории
-    """
+    """Получить все иконки категории"""
     categories = {
         "class_etc": CLASS_ETC,
         "promotion": PROMOTION,
         "skills": SKILLS,
-        "spirit": SPIRIT,  # Было spirit_familiars
+        "spirit": SPIRIT,
         "info": INFO_CATEGORIES,
         "adventures": ADVENTURES,
         "guild": GUILD,
@@ -226,99 +208,30 @@ def get_category_icons(category: str) -> dict:
 
 
 def list_all_icons() -> list:
-    """
-    Получить список всех доступных имён иконок
-    
-    Returns:
-        Список имён иконок
-    """
+    """Список всех имён иконок"""
     return list(ALL_ICONS.keys())
 
 
 def generate_icon_html(name: str, size: int = 32) -> str:
-    """
-    Сгенерировать HTML для иконки
-    
-    Args:
-        name: Имя иконки
-        size: Размер в пикселях
-    
-    Returns:
-        HTML строка с img тегом
-    """
+    """HTML тег для иконки"""
     url = get_icon(name)
-    return f'<img src="{url}" alt="{name}" width="{size}" height="{size}" style="vertical-align: middle;">'
+    if not url:
+        return ""
+    return (
+        f'<img src="{url}" alt="{name}" width="{size}" height="{size}" '
+        f'class="inline-icon" onerror="this.style.display=\'none\'">'
+    )
 
-
-# ═══════════════════════════════════════════════════════
-# 📊 СТАТИСТИКА
-# ═══════════════════════════════════════════════════════
 
 def get_stats() -> dict:
-    """
-    Получить статистику иконок
-    
-    Returns:
-        Словарь со статистикой
-    """
+    """Статистика иконок"""
     return {
         "total_icons": len(ALL_ICONS),
         "class_etc": len(CLASS_ETC),
         "promotion": len(PROMOTION),
         "skills": len(SKILLS),
-        "spirit": len(SPIRIT),  # Было spirit_familiars
+        "spirit": len(SPIRIT),
         "info": len(INFO_CATEGORIES),
         "adventures": len(ADVENTURES),
         "guild": len(GUILD),
     }
-
-
-# ═══════════════════════════════════════════════════════
-# 🎨 ПРЕОБРАЗОВАНИЕ ЭМОДЗИ В ИКОНКИ
-# ═══════════════════════════════════════════════════════
-
-EMOJI_TO_ICON = {
-    "🔷": "promo_ether",
-    "⚔️": "promo_black_mithril",
-    "🟩": "promo_demonite",
-    "🐲": "promo_dragonos",
-    "🔮": "promo_blood",
-    "🥶": "promo_frost",
-    "😈": "promo_nox",
-    "🌊": "promo_abyss",
-    "🔴": "promo_infinat",
-    "🌪": "promo_cyclone",
-    "🐉": "promo_ancient",
-    "🗿": "promo_gigalor",
-    "🪨": "cat_promoutes",
-    "📜": "info_general",
-    "🌳": "adv_adventures",
-    "🛡": "guild_guild",
-    "👻": "info_event",
-    "😤": "info_rage",
-    "📺": "info_ads",
-    "🐾": "info_pets",
-    "💰": "info_farm",
-    "🕳️": "adv_cave",
-    "🌀": "adv_rift",
-    "🔥": "adv_shelter",
-    "🪙": "adv_mind",
-    "🌲": "adv_forest",
-    "🍲": "guild_cooking",
-}
-
-
-def emoji_to_icon_url(emoji: str) -> str:
-    """
-    Преобразовать эмодзи в URL иконки
-    
-    Args:
-        emoji: Эмодзи
-    
-    Returns:
-        URL иконки или None
-    """
-    icon_name = EMOJI_TO_ICON.get(emoji)
-    if icon_name:
-        return get_icon(icon_name)
-    return None

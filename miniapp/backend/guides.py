@@ -1,10 +1,39 @@
+from icons import get_icon, list_all_icons, get_stats
+def format_guide_text(text: str) -> str:
+    """
+    Заменяет плейсхолдеры иконок на HTML img теги
+    Пример: {{promo_ether}} → <img src="URL" width="20">
+    """
+    from icons import get_icon
+    
+    # Находим все плейсхолдеры {{icon_name}}
+    import re
+    
+    def replace_icon(match):
+        icon_name = match.group(1)
+        icon_url = get_icon(icon_name)
+        return f'<img src="{icon_url}" alt="{icon_name}" width="20" height="20" style="vertical-align: middle; margin: 0 4px;">'
+    
+    # Заменяем {{icon_name}} на img теги
+    formatted_text = re.sub(r'\{\{(\w+)\}\}', replace_icon, text)
+    
+    # Дополнительно: заменяем переносы строк на <br>
+    formatted_text = formatted_text.replace('\n', '<br>')
+    
+    # Заменяем **text** на <strong>text</strong>
+    formatted_text = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', formatted_text)
+    
+    # Заменяем *text* на <em>text</em>
+    formatted_text = re.sub(r'\*(.+?)\*', r'<em>\1</em>', formatted_text)
+    
+    return formatted_text
 # ═══════════════════════════════════════════════════════
 # 📋 КАТЕГОРИИ (с иконками)
 # ═══════════════════════════════════════════════════════
 MAIN_CATEGORIES = {
     "cat_promoutes": {
         "title": "Промоуты",
-        "icon": "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/cat_promoutes.png"
+        "icon": get_icon("promo_nox")
     },
     "info_general": {
         "title": "Общая информация",
@@ -25,18 +54,18 @@ MAIN_CATEGORIES = {
 # ═══════════════════════════════════════════════════════
 SUBMENUS = {
     "cat_promoutes": [
-        ("promo_ether", "Эфир", "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/Ether.png"),
-        ("promo_black_mithril", "Чёрный Мифрил", "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/promo_black_mithril.png"),
-        ("promo_demonite", "Демонит", "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/Demon Metal.png"),
-        ("promo_dragonos", "Драгонос", "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/Dragonos.png"),
-        ("promo_blood", "Кровь Великих", "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/Ragnablood.png"),
-        ("promo_frost", "Иней Войны", "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/Warfrost.png"),
-        ("promo_nox", "Тёмный Нокс", "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/Dark Nox.png"),
-        ("promo_abyss", "Синяя Бездна", "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/Blue Abyss.png"),
-        ("promo_infinat", "Инфинат", "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/Infinaut.png"),
-        ("promo_cyclone", "Циклон", "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/Cyclos.png"),
-        ("promo_ancient", "Эйшенткенаин", "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/Ancient Canine.png"),
-        ("promo_gigalor", "Гигалор", "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/Gigarock.png"),
+        ("promo_ether", "Эфир", get_icon("promo_ether")),
+        ("promo_black_mithril", "Чёрный Мифрил", get_icon("promo_black_mithril")),
+        ("promo_demonite", "Демонит", get_icon("promo_demonite")),
+        ("promo_dragonos", "Драгонос", get_icon("promo_dragonos")),
+        ("promo_blood", "Кровь Великих", get_icon("promo_blood")),
+        ("promo_frost", "Иней Войны", get_icon("promo_frost")),
+        ("promo_nox", "Тёмный Нокс", get_icon("promo_nox")),
+        ("promo_abyss", "Синяя Бездна", get_icon("promo_abyss")),
+        ("promo_infinat", "Инфинат", get_icon("promo_infinat")),
+        ("promo_cyclone", "Циклон", get_icon("promo_cyclone")),
+        ("promo_ancient", "Эйшенткенаин", get_icon("promo_ancient")),
+        ("promo_gigalor", "Гигалор", get_icon("promo_gigalor")),
     ],
     "info_general": [
         ("info_event", "Что покупать на ивенте?", "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/info_event.png"),
@@ -68,27 +97,25 @@ CONTENT = {
     # 🪨 ПРОМОУТЫ
     "promo_ether": {
         "title": "Эфир | Ether",
-        "icon": "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/Ether.png",
-        "text": """🔷 **Гайд на Эфир | Ether** 🔷
+        "text": """ **Гайд на Эфир**
 
 📊 **Характеристики:**
-• Ориентировочный этап: 340 ± 5
+• Ориентировочный этап: [340 ± 5]
 • Атака: 100f (с 10 слотами и Яростью меньше)
 • Крит. урон: 20а
 • ДС: 3000
-• Класс: с17-19
-• Меч: м1 или opp
+• Класс: {{class_c18}} - {{class_c19}}
+• Меч: {{sword_m1}} или {{sword_opp}}
 • Реликвии: 30-40
 
 💎 **Спутники:**
 • Навык Элли на понижение ОЗ: 30-40
 
-👻 **Духи:**
-• Noah, Loar, Sala: 1-3⭐
+{{spirit_ark}}**Духи:**
+• {{spirit_noah}} Noah, {{spirit_loar}} Loar, {{spirit_sala}} Sala: 1-3⭐ 
 
 💡 **Советы:**
-• Фокус на атаке и критическом уроне
-• Оптимально для этапа 340""",
+• Фокус на атаке и критическом уроне""",
         "photo": [],  # 🔽 ЗАМЕНИТЕ НА URL: ["https://i.imgur.com/abc123.png"]
         "video": None,
         "document": None
@@ -96,26 +123,25 @@ CONTENT = {
     
     "promo_black_mithril": {
         "title": "Чёрный Мифрил | Black Mythril",
-        "icon": "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/promo_black_mithril.png",
-        "text": """⚔️ **Гайд на Чёрный Мифрил** ⚔️
+        "text": """**Гайд на Чёрный Мифрил** 
 
 📊 **Характеристики:**
-• Ориентировочный этап: 460 ± 5
+• Ориентировочный этап: [460 ± 5]
 • Атака: 1.7-2g
 • Крит. урон: 25-28а
 • ДС: 4500-4800
-• Класс: с17-19
-• Меч: базовый орр
+• Класс: {{class_c18}} - {{class_c19}}
+• Меч: {{sword_opp}}
 • Реликвии: 40-50
 
 💎 **Спутники:**
 • Уровень понижения ХР мобов: 45+
 • Песня эльфов
 
-👻 **Духи:**
-• Noah: 3⭐-5⭐, E3-5
-• Loar: 3⭐-5⭐, E3-5
-• Sala: миф, E1-2
+{{spirit_ark}} **Духи:**
+• {{spirit_noah}}: 3⭐-5⭐, E3-5
+• {{spirit_loar}}: 3⭐-5⭐, E3-5
+• {{spirit_sala}}: миф, E1-2
 
 💡 **Советы:**
 • С Бредом у Sala можно больше E1""",
@@ -126,25 +152,24 @@ CONTENT = {
     
     "promo_demonite": {
         "title": "Демонит | Demon Metal",
-        "icon": "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/Demon Metal.png",
         "text": """ **Гайд на Демонит** 
 
 📊 **Характеристики:**
-• Ориентировочный этап: 550 ± 5
+• Ориентировочный этап: [550 ± 5]
 • Атака: 60-65g
 • Крит. урон: 30-34а
 • ДС: 5000-5200
-• Класс: с18-19
-• Меч: Базовый орр 3-5⭐
+• Класс: {{class_c19}} - {{class_c20}}
+• Меч: {{sword_opp}} 3-5⭐
 • Реликвии: 40-50
 
 💎 **Спутники:**
 • Навык Элли на понижение ХР мобов: 50+
 
-👻 **Духи:**
-• Noah: 3⭐-миф, E3-5
-• Loar: 3⭐-5⭐, E3-5
-• Sala: миф, E1-2
+{{spirit_ark}} **Духи:**
+• {{spirit_noah}}: 3⭐-миф, E3-5
+• {{spirit_loar}}: 3⭐-5⭐, E3-5
+• {{spirit_sala}}: миф, E1-2
 
 💎 **Камни навыков:**
 • Вода, Камень, Огонь""",
@@ -155,26 +180,25 @@ CONTENT = {
     
     "promo_dragonos": {
         "title": "Драгонос | Dragonos",
-        "icon": "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/Dragonos.png",
-        "text": """🐲 **Гайд на Драгонос** 🐲
+        "text": """ **Гайд на Драгонос** 
 
 📊 **Характеристики:**
-• Ориентировочный этап: 610 ± 5
+• Ориентировочный этап: [610 ± 5]
 • Атака: 250-300g с орбом, без 700g
 • ХР: 4g
 • Крит. урон: 32-37а
 • ДС: 5800-6200
-• Класс: с19, 20 без орба
-• Меч: Базовый орр 3-5⭐ (Первый Авакен орра)
+• Класс: {{class_c19}}, {{class_c20}} без орба
+• Меч: {{sword_opp}} 3-5⭐, {{sword_awaken}}
 • Реликвии: 50-60
 
 💎 **Спутники:**
 • Навык Элли на понижение ОЗ врагов: 50+
 
-👻 **Духи:**
-• Noah: миф, E4-5
-• Loar: миф, E4-5
-• Sala: миф, E1-5
+{{spirit_ark}} **Духи:**
+• {{spirit_noah}}: миф, E4-5
+• {{spirit_loar}}: миф, E4-5
+• {{spirit_sala}}: миф, E1-5
 
 💎 **Камни навыков:**
 • Вода, Камень, Огонь
@@ -188,26 +212,25 @@ CONTENT = {
     
     "promo_blood": {
         "title": "Кровь Великих | Ragna Blood",
-        "icon": "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/Ragnablood.png",
-        "text": """🔮 **Гайд на Кровь Великих** 🔮
+        "text": """ **Гайд на Кровь Великих** 
 
 📊 **Характеристики:**
-• Ориентировочный этап: 700 ± 5
+• Ориентировочный этап: [700 ± 5]
 • Атака: 9h
 • Крит. урон: 35-40а
 • ДС: 8000-8400
-• Класс: с20 0-3⭐
-• Меч: Базовый орр 5⭐ / Первый Авакен орра 0-4⭐
+• Класс: {{class_c20}} 0-3⭐
+• Меч: {{sword_opp}} 5⭐ / {{sword_awaken}} 0-4⭐
 • Реликвии: 50-60
 
 💎 **Спутники:**
 • Эльфийская песня: 70-80 лвл
 • Мудрость войны: 40-50
 
-👻 **Духи:**
-• Noah: миф, E4-5
-• Loar: миф, E4-5
-• Sala: миф, E3-5
+{{spirit_ark}} **Духи:**
+• {{spirit_noah}}: миф, E4-5
+• {{spirit_loar}}: миф, E4-5
+• {{spirit_sala}}: миф, E3-5
 
 ⚔️ **Урон стихий:**
 • Огня и Камня: 6-8к
@@ -221,25 +244,24 @@ CONTENT = {
     
     "promo_frost": {
         "title": "Иней Войны | War Frost",
-        "icon": "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/Warfrost.png",
-        "text": """🥶 **Гайд на Иней Войны** 🥶
+        "text": """ **Гайд на Иней Войны** 
 
 📊 **Характеристики:**
-• Ориентировочный этап: 770 ± 5
+• Ориентировочный этап: [770 ± 5]
 • Атака: 156h
 • ХР/Rxh: минимум 630g/30g
 • Крит. урон: 63-67а
 • ДС: 12000-12500
-• Класс: с20 2-5⭐
-• Меч: Первый Авакен орра 3-5⭐ → Абсолют
+• Класс: {{class_c20}} 2-5⭐
+• Меч: {{sword_awaken}} 3-5⭐ → {{sword_absolutev1}}
 • Реликвии: 60-70
 
 💎 **Спутники:**
 • Эльфийская песня: 70+
 • Мудрость войны: 50+
 
-👻 **Духи:**
-• Noah, Loar, Sala: все миф, E4-5
+{{spirit_ark}} **Духи:**
+• {{spirit_noah}}, {{spirit_loar}}, {{spirit_sala}}: все миф, E4-5
 
 🐾 **Фамильяр:**
 • Необязательно, но делается дешево: 6⭐6⭐6⭐ или 7⭐7⭐7⭐
@@ -254,24 +276,23 @@ CONTENT = {
     
     "promo_nox": {
         "title": "Тёмный Нокс | Dark Nox",
-        "icon": "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/Dark Nox.png",
-        "text": """😈 **Гайд на Тёмный Нокс** 😈
+        "text": """ **Гайд на Тёмный Нокс** 
 
 📊 **Характеристики:**
-• Ориентировочный этап: 850 ± 5
+• Ориентировочный этап: [850 ± 5]
 • Атака: 4i
 • Крит. урон: 72а
 • ДС: 18500-19500
-• Класс: терра 0-5⭐
-• Меч: Первый авакен орра 3-5⭐ → Абсолют 0-3⭐
+• Класс: {{class_terra}} 0-5⭐
+• Меч: {{sword_awaken}} 3-5⭐ → {{sword_absolutev1}} 0-3⭐
 • Реликвии: 60-70
 
 💎 **Спутники:**
 • Эльфийская песня: 80+
 • Мудрость войны: 60+
 
-👻 **Духи:**
-• Noah, Loar, Sala: все миф, E5
+{{spirit_ark}} **Духи:**
+• {{spirit_noah}}, {{spirit_loar}}, {{spirit_sala}}: все миф, E5
 
 🐾 **Фамильяр:**
 • ХИКУНА/ХИКУРИОН: 7⭐7⭐7⭐
@@ -288,24 +309,23 @@ CONTENT = {
     
     "promo_abyss": {
         "title": "Синяя Бездна | Blue Abyss",
-        "icon": "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/Blue Abyss.png",
-        "text": """🌊 **Гайд на Синюю Бездну** 🌊
+        "text": """ **Гайд на Синюю Бездну** 
 
 📊 **Характеристики:**
-• Ориентировочный этап: 955 ± 5
+• Ориентировочный этап: [955 ± 5]
 • Атака и крит.урон: ~150i с 200а ИЛИ 180-200i с 150а
 • ХР: минимум 310h и около 18h РХР
 • ДС: 29000-31000
-• Класс: терра 3-5⭐, сид
-• Меч: Первый Абсолют 3-5⭐ → Абсолют v2
+• Класс: {{class_terra}} 3-5⭐, {{class_sid}}
+• Меч: {{sword_absolutev1}} 3-5⭐ → {{sword_absolutev2}}
 • Реликвии: 80-100
 
 💎 **Спутники:**
 • Эльфийская песня: 100 лвл
 • Мудрость войны: 80+
 
-👻 **Духи:**
-• Noah, Loar, Sala: все миф, E5
+{{spirit_ark}} **Духи:**
+• {{spirit_noah}},{{spirit_loar}}, {{spirit_sala}}: все миф, E5
 
 🐾 **Фамильяр:**
 • ХИКУНА/ХИКУРИОН: 7⭐
@@ -322,25 +342,24 @@ CONTENT = {
     
     "promo_infinat": {
         "title": "Инфинат | Inflnat",
-        "icon": "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/Infinaut.png",
-        "text": """🔴 **Гайд на Инфинат** 🔴
+        "text": """ **Гайд на Инфинат** 
 
 📊 **Характеристики:**
-• Ориентировочный этап: 1020 ± 5
+• Ориентировочный этап: [1020 ± 5]
 • Атака: 3.5j-3.7j
 • ХР/Rxh: 4.5i/230h
 • Крит. урон: 210а-220а
 • ДС: 30000-35000
-• Класс: сид 0-5⭐
-• Меч: Второй Абсолют 3-5⭐ → Меч древних
+• Класс: {{class_sid}} 0-5⭐
+• Меч: {{sword_absolutev2}} 3-5⭐ → Меч древних
 • Реликвии: крит, урон 100
 
 💎 **Спутники:**
 • Эльфийская песня: 100 лвл
 • Мудрость войны: 100 лвл
 
-👻 **Духи:**
-• Noah, Loar, Sala: все миф, E5
+{{spirit_ark}} **Духи:**
+• {{spirit_noah}}, {{spirit_loar}}, {{spirit_sala}}: все миф, E5
 
 🐾 **Фамильяр:**
 • ХИКУНА/ХИКУРИОН: 7⭐
@@ -361,24 +380,23 @@ CONTENT = {
     
     "promo_cyclone": {
         "title": "Циклон | Ciclos",
-        "icon": "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/Cyclos.png",
-        "text": """🌪 **Гайд на Циклон** 🌪
+        "text": """ **Гайд на Циклон** 
 
 📊 **Характеристики:**
-• Ориентировочный этап: 1120 ± 5
+• Ориентировочный этап: [1120 ± 5]
 • Атака: 290j-320j
 • Крит. урон: 235а-245а
 • ДС: 48000-53000
-• Класс: сид 3-5⭐, нова
-• Меч: Абсолют V2 3-5⭐ → Меч древних
+• Класс: {{class_sid}} 3-5⭐, {{class_nova}}
+• Меч: {{sword_absolutev2}} 3-5⭐ → Меч древних
 • Реликвии: крит, урон 100
 
 💎 **Спутники:**
 • Эльфийская песня: 100 лвл
 • Мудрость войны: 100 лвл
 
-👻 **Духи:**
-• Noah, Loar, Sala: все миф, E5
+{{spirit_ark}} **Духи:**
+• {{spirit_noah}}, {{spirit_loar}}, {{spirit_sala}}: все миф, E5
 
 🐾 **Фамильяр:**
 • ХИКУНА/ХИКУРИОН: 7⭐
@@ -395,28 +413,27 @@ CONTENT = {
     
     "promo_ancient": {
         "title": "Эйшенткенаин | Ancient Canine",
-        "icon": "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/Ancient Canine.png",
-        "text": """🐉 **Гайд на Эйшенткенаин** 🐉
+        "text": """ **Гайд на Эйшенткенаин** 
 
 ⚠️ **Дисклеймер:**
 Урон, получаемый из статов ниже, непосредственно связан с самой проходкой. При других прожатиях может понадобиться больше урона.
 
 📊 **Характеристики:**
-• Ориентировочный этап: 1210 ± 5
+• Ориентировочный этап: [1210 ± 5]
 • Без фамика 8⭐8⭐8⭐ проходится уже на 1200
 • Атака: 8.5k-9k
 • Крит. урон: 280а-300а
 • ДС: 70000-75000
-• Класс: сид 4-5⭐, нова
-• Меч: Абсолют V2 4-5⭐ → Меч древних
+• Класс: {{class_sid}} 4-5⭐, {{class_nova}}
+• Меч: {{sword_absolutev2}} 4-5⭐ → Меч древних
 • Реликвии: 100 крит, урон
 
 💎 **Спутники:**
 • Эльфийская песня: 100
 • Мудрость войны: 100
 
-👻 **Духи:**
-• Sala (в первом слоте!), Noah, Loar: все миф 2-5⭐, либо иммортал, E5
+{{spirit_ark}} **Духи:**
+• {{spirit_sala}} (в первом слоте!), {{spirit_noah}}, {{spirit_loar}}: все миф 2-5⭐, либо иммортал, E5
 
 🐾 **Фамильяр:**
 • Так как босс имеет стихию Огня, желательно иметь А (фамильяр)
@@ -437,16 +454,15 @@ CONTENT = {
     
     "promo_gigalor": {
         "title": "Гигалор | Gigarock",
-        "icon": "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/Gigarock.png",
-        "text": """🗿 **Гайд на Гигалор** 🗿
+        "text": """ **Гайд на Гигалор** 
 
 📊 **Характеристики:**
-• Ориентировочный этап: 1300 ± 5
+• Ориентировочный этап: [1300 ± 5]
 • Атака: 350k с яростью / 380k без ярости
 • ХР/Rxh: если без ярости - неважно / с яростью желательно более 500g
 • Крит. урон: 350а-370а
 • ДС: 100000+
-• Класс: нова
+• Класс: {{class_nova}}
 • Меч: Древний
 • Реликвии: 100
 
@@ -454,8 +470,8 @@ CONTENT = {
 • Эльфийская песня: 100 лвл
 • Мудрость войны: 100 лвл
 
-👻 **Духи:**
-• Noah, Loar, Sala: все миф-имм, E5
+{{spirit_ark}} **Духи:**
+• {{spirit_noah}}, {{spirit_loar}}, {{spirit_sala}}: все миф-имм, E5
 
 🐾 **Фамильяр:**
 • ХИКУНА: 8⭐, 8⭐, 8⭐
@@ -473,7 +489,6 @@ CONTENT = {
     # 📜 ОБЩАЯ ИНФОРМАЦИЯ
     "info_event": {
         "title": "Что покупать на ивенте?",
-        "icon": "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/info_event.png",
         "text": """👻 **Что покупать на ивенте?**
 
 📌 **Приоритет 1:** Легендарный дух
@@ -499,7 +514,6 @@ CONTENT = {
     
     "info_rage": {
         "title": "Как играть с Яростью?",
-        "icon": "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/info_rage.png",
         "text": """😤 **Как играть с Яростью?**
 
 🎥 **Обучающее видео:**
@@ -516,7 +530,6 @@ CONTENT = {
     
     "info_ads": {
         "title": "Просмотр рекламы",
-        "icon": "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/info_ads.png",
         "text": """📺 **Просмотр рекламы**
 
 💰 **Стоимость:**
@@ -536,7 +549,6 @@ CONTENT = {
     
     "info_pets": {
         "title": "Прокачка спутников",
-        "icon": "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/info_pets.png",
         "text": """🐾 **Прокачка спутников**
 
 ⭐ **Приоритет прокачки:**
@@ -556,7 +568,6 @@ CONTENT = {
     
     "info_sword": {
         "title": "Меч душ и гравировка",
-        "icon": "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/info_sword.png",
         "text": """⚔️ **Меч душ и гравировка**
 
 💎 **Рекомендации по самоцветам:**
@@ -589,7 +600,6 @@ CONTENT = {
     
     "info_farm": {
         "title": "Фарм этапов",
-        "icon": "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/info_farm.png",
         "text": """💰 **Фарм этапов**
 
 📊 **Наиболее важные этапы:**
@@ -622,8 +632,7 @@ CONTENT = {
     
     "info_spirit": {
         "title": "Духи/Spirits",
-        "icon": "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/info_spirit.png",
-        "text": """👻 **Духи - Оптимизация**
+        "text": """{{spirit_ark}} **Духи - Оптимизация**
 
 📌 **Ранняя игра:**
 
@@ -673,7 +682,6 @@ Nerh, Ark, Boo, Kart, Sala, Luga
     # 🌳 ПРИКЛЮЧЕНИЯ
     "adv_cave": {
         "title": "Учебная пещера",
-        "icon": "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/adv_cave.png",
         "text": """🕳️ **Учебная пещера**
 
 📍 **Описание:**
@@ -690,7 +698,6 @@ Nerh, Ark, Boo, Kart, Sala, Luga
     
     "adv_rift": {
         "title": "Межпространственный разлом",
-        "icon": "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/adv_rift.png",
         "text": """🌀 **Межпространственный разлом**
 
 📍 **Описание:**
@@ -707,7 +714,6 @@ Nerh, Ark, Boo, Kart, Sala, Luga
     
     "adv_shelter": {
         "title": "Приют Спящего Пламени",
-        "icon": "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/adv_shelter.png",
         "text": """🔥 **Приют Спящего Пламени**
 
 📍 **Описание:**
@@ -724,7 +730,6 @@ Nerh, Ark, Boo, Kart, Sala, Luga
     
     "adv_mind": {
         "title": "Золотой рудник",
-        "icon": "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/adv_mind.png",
         "text": """🪙 **Золотой рудник**
 
 📊 **Стратегия фарма:**
@@ -757,7 +762,6 @@ Nerh, Ark, Boo, Kart, Sala, Luga
     
     "adv_forest": {
         "title": "Лес циркуляции",
-        "icon": "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/adv_forest.png",
         "text": """🌲 **Лес циркуляции**
 
 📍 **Описание:**
@@ -775,7 +779,6 @@ Nerh, Ark, Boo, Kart, Sala, Luga
     # 🛡 ГИЛЬДИЯ
     "guild_wyvern": {
         "title": "Виверна",
-        "icon": "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/guild_wyvern.png",
         "text": """🐉 **Виверна - Гильдейское событие**
 
 📋 **Этапы:**
@@ -803,7 +806,6 @@ Nerh, Ark, Boo, Kart, Sala, Luga
     
     "guild_cooking": {
         "title": "Приготовление блюд",
-        "icon": "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/guild_cooking.png",
         "text": """🍲 **Приготовление блюд**
 
 📌 **Приоритет еды:**
@@ -859,3 +861,5 @@ def get_stats():
         "guides_with_photos": sum(1 for guide in CONTENT.values() if guide.get("photo")),
         "guides_with_videos": sum(1 for guide in CONTENT.values() if guide.get("video")),
     }
+
+    
