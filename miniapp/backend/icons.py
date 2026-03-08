@@ -23,6 +23,7 @@ def _url(path: str) -> str:
 # ═══════════════════════════════════════════════════════
 CLASS_ETC = {
     # Классы
+    "class_c17": _url("class_etc/c17.png"),
     "class_c18": _url("class_etc/c18.png"),
     "class_c19": _url("class_etc/c19.png"),
     "class_terra": _url("class_etc/Tera.png"),
@@ -35,6 +36,7 @@ CLASS_ETC = {
     "sword_awaken": _url("class_etc/awaken.png"),
     "sword_absolutev1": _url("class_etc/AbsoluteV1.png"),
     "sword_absolutev2": _url("class_etc/AbsoluteV2.gif"),
+    "sword_immortal": _url("class_etc/immortl_sword.png")
     # Реликвии
     "relic_weapon": _url("class_etc/relic_weapon.png"),
     "relic_armor": _url("class_etc/relic_armor.png"),
@@ -61,42 +63,70 @@ CLASS_ETC = {
 # ═══════════════════════════════════════════════════════
 PROMOTION = {
     "promo_ether": _url("promotion/Ether.png"),
-    "promo_black_mithril": _url("promotion/Black Mythril.png"),
-    "promo_demonite": _url("promotion/Demon Metal.png"),
+    "promo_black_mithril": _url("promotion/Black_Mythril.png"),
+    "promo_demonite": _url("promotion/Demon_Metal.png"),
     "promo_dragonos": _url("promotion/Dragonos.png"),
     "promo_blood": _url("promotion/Ragnablood.png"),
     "promo_frost": _url("promotion/Warfrost.png"),
-    "promo_nox": _url("promotion/Dark Nox.png"),
-    "promo_abyss": _url("promotion/Blue Abyss.png"),
+    "promo_nox": _url("promotion/Dark_Nox.png"),
+    "promo_abyss": _url("promotion/Blue_Abyss.png"),
     "promo_infinat": _url("promotion/Infinaut.png"),
     "promo_cyclone": _url("promotion/Cyclos.png"),
-    "promo_ancient": _url("promotion/Ancient Canine.png"),
+    "promo_ancient": _url("promotion/Ancient_Canine.png"),
     "promo_gigalor": _url("promotion/Gigarock.png"),
-    "cat_promoutes": _url("promotion/cat_promoutes.png"),
+    "cat_promoutes": _url("promotion/Warfrost.png"),
 }
 
 # ═══════════════════════════════════════════════════════
 # SKILLS (Навыки и камни)
 # ═══════════════════════════════════════════════════════
 SKILLS = {
-    "skill_water": _url("skills/skill_water.png"),
-    "skill_earth": _url("skills/skill_earth.png"),
-    "skill_wind": _url("skills/skill_wind.png"),
-    "skill_fire": _url("skills/skill_fire.png"),
-    "skill_meditation": _url("skills/skill_meditation.png"),
-    "skill_hell_strike": _url("skills/skill_hell_strike.png"),
-    "skill_rage": _url("skills/skill_rage.png"),
-    "skill_elf_song": _url("skills/skill_elf_song.png"),
-    "skill_war_wisdom": _url("skills/skill_war_wisdom.png"),
-    "element_fire": _url("skills/element_fire.png"),
-    "element_earth": _url("skills/element_earth.png"),
-    "element_wind": _url("skills/element_wind.png"),
-    "element_water": _url("skills/element_water.png"),
+    "Agile": _url("skills/Agile.png"),
+    "Blizzard": _url("skills/Blizzard.png"),
+    "BurningSword": _url("skills/BurningSword.png"),
+    "CurvedBlade": _url("skills/CurvedBlade.png"),
+    "DancingWaves": _url("skills/DancingWaves.png"),
+    "DemonHunt": _url("skills/DemonHunt.png"),
+    "EarthsWill": _url("skills/EarthsWill.png"),
+    "FireBlast": _url("skills/FireBlast.png"),
+    "FireSword": _url("skills/FireSword.png"),
+    "FlameSlash": _url("skills/FlameSlash.png"),
+    "FlameWave": _url("skills/FlameWave.png"),
+    "FlowingBlade": _url("skills/FlowingBlade.png"),
+    "Fulgurous": _url("skills/Fulgurous.png"),
+    "Gigalmact": _url("skills/Gigalmact.png"),
+    "GigaStrike": _url("skills/GigaStrike.png"),
+    "GroundsBlessing": _url("skills/GroundsBlessing.png"),
+    "HellfireSlash": _url("skills/HellfireSlash.png"),
+    "HotBlast": _url("skills/HotBlast.png"),
+    "IceShower": _url("skills/IceShower.png"),
+    "IceTime": _url("skills/IceTime.png"),
+    "IronWill": _url("skills/IronWill.png"),
+    "LifeMana": _url("skills/LifeMana.png"),
+    "LightingStroke": _url("skills/LightingStroke.png"),
+    "LightningBody": _url("skills/LightningBody.png"),
+    "ManasBlessing": _url("skills/ManasBlessing.png"),
+    "Mantra": _url("skills/Mantra.png"),
+    "Meditation": _url("skills/Meditation.png"),
+    "PillarOfFire": _url("skills/PillarOfFire.png"),
+    "PowerImpact": _url("skills/PowerImpact.png"),
+    "PowerStrike": _url("skills/PowerStrike.png"),
+    "Rage": _url("skills/Rage.png"),
+    "Rave": _url("skills/Rave.png"),
+    "RedLighting": _url("skills/RedLighting.png"),
+    "SpeedSword": _url("skills/SpeedSword.png"),
+    "StrongCurrent": _url("skills/StrongCurrent.png"),
+    "Supersonic": _url("skills/Supersonic.png"),
+    "ThunderboltSlash": _url("skills/ThunderboltSlash.png"),
+    "ThunderSlash": _url("skills/ThunderSlash.png"),
+    "WarriorBurn": _url("skills/WarriorBurn.png"),
+    "WaterSlash": _url("skills/WaterSlash.png"),
+    "WindSword": _url("skills/WindSword.png"),
+    "WrathOfGods": _url("skills/WrathOfGods.png"),
 }
 
 # ═══════════════════════════════════════════════════════
 # SPIRIT (Духи и фамильяры)
-# ⚠️ Проверь в GitHub: папка "spirits" или "spirit"?
 # ═══════════════════════════════════════════════════════
 SPIRIT = {
     # Духи — папка "spirits"
@@ -113,7 +143,7 @@ SPIRIT = {
     "spirit_luga": _url("spirits/Luga.png"),
     "spirit_ark": _url("spirits/Ark.png"),
     "spirit_nerh": _url("spirits/Nerh.png"),
-    # Фамильяры — папка "spirit" (⚠️ другая папка!)
+    # Фамильяры — папка "spirits"
     "familiar_hikuna": _url("spirit/familiar_hikuna.png"),
     "familiar_hikurion": _url("spirit/familiar_hikurion.png"),
     "familiar_tikuna": _url("spirit/familiar_tikuna.png"),
