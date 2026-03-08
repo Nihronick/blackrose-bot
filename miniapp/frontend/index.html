@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>BlackRose Guides</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+        /* ===== CSS VARIABLES (Telegram Theme) ===== */
+        :root {
+            --bg-color: var(--tg-theme-bg-color, #ffffff);
+            --text-color: var(--tg-theme-text-color, #000000);
+            --hint-color: var(--tg-theme-hint-color, #999999);
+            --button-color: var(--tg-theme-button-color, #3390ec);
+            --button-text: var(--tg-theme-button-text-color, #ffffff);
+            --secondary-bg: var(--tg-theme-secondary-bg-color, #f5f5f5);
+            --link-color: var(--tg-theme-link-color, #2481cc);
+            --danger-color: #ff5555;
+            --success-color: #34c759;
+        }
+
+        /* ===== RESET & BASE ===== */
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: var(--bg-color);
+            color: var(--text-color);
+            padding: 12px;
+            line-height: 1.5;
+            font-size: 16px;
+            min-height: 100vh;
+        }
+
+        /* ===== UTILITIES ===== */
+        .hidden { display: none !important; }
+        .text-center { text-align: center; }
+        .text-hint { color: var(--hint-color); }
+        .mt-2 { margin-top: 12px; }
+        .mb-2 { margin-bottom: 12px; }
+
+        /* ===== HEADER ===== */
+        .header {
+            text-align: center;
+            padding: 20px 0 16px;
+            border-bottom: 1px solid var(--secondary-bg);
+            margin-bottom: 16px;
+        }
+        .header h1 {
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--button-color);
+            margin-bottom: 4px;
+        }
+        .header p {
+            font-size: 14px;
+            color: var(--hint-color);
+        }
+
+        /* ===== SEARCH BOX ===== */
+        .search-box {
+            margin: 0 0 16px;
+            position: sticky;
+            top: 0;
+            background: var(--bg-color);
+            padding: 8px 0;
+            z-index: 10;
+        }
+        .search-box input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid var(--secondary-bg);
+            border-radius: 12px;
+            background: var(--secondary-bg);
+            color: var(--text-color);
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        .search-box input:focus {
+            border-color: var(--button-color);
+        }
+        .search-box input::placeholder {
+            color: var(--hint-color);
+        }
+
+        /* ===== CARDS ===== */
+        .card {
+            background: var(--secondary-bg);
+            border-radius: 14px;
+            padding: 16px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: transform 0.1s, opacity 0.1s;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        .card:active {
+            transform: scale(0.99);
+            opacity: 0.9;
+        }
+        
+        /* ===== CARD ICON (IMAGE) ===== */
+        .card-icon {
+            min-width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .card-icon img {
+            width: 32px;
+            height: 32px;
+            object-fit: contain;
+            border-radius: 6px;
+        }
+        .card-icon .emoji-fallback {
+            font-size: 24px;
+        }
+
+        .card-content {
+            flex: 1;
+            min-width: 0;
+        }
+        .card h3 {
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 4px;
+            word-break: break-word;
+        }
+        .card p {
+            color: var(--hint-color);
+            font-size: 14px;
+            line-height: 1.4;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .card-meta {
+            display: flex;
+            gap: 8px;
+            margin-top: 6px;
+            font-size: 12px;
+            color: var(--hint-color);
+        }
+        .card-meta span {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* ===== BACK BUTTON ===== */
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 16px;
+            background: var(--button-color);
+            color: var(--button-text);
+            border: none;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            margin-bottom: 12px;
+            transition: opacity 0.2s;
+        }
+        .back-btn:active { opacity: 0.9; }
+
+        /* ===== GUIDE CONTENT ===== */
+        .guide-content {
+            background: var(--secondary-bg);
+            border-radius: 14px;
+            padding: 16px;
+            margin-top: 8px;
+            white-space: pre-wrap;
+            word-break: break-word;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+        .guide-content img {
+            max-width: 100%;
+            border-radius: 10px;
+            margin: 12px 0;
+            display: block;
+        }
+
+        /* ===== LOADING & ERROR ===== */
+        .loading {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--hint-color);
+        }
+        .loading::after {
+            content: '';
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            border: 3px solid var(--secondary-bg);
+            border-top-color: var(--button-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            vertical-align: middle;
+            margin-left: 8px;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        .error {
+            background: rgba(255, 85, 85, 0.1);
+            color: var(--danger-color);
+            border-radius: 12px;
+            padding: 16px;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        /* ===== EMPTY STATE ===== */
+        .empty {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--hint-color);
+        }
+        .empty-icon {
+            font-size: 48px;
+            margin-bottom: 12px;
+            opacity: 0.5;
+        }
+
+        /* ===== SCROLLBAR ===== */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb {
+            background: var(--hint-color);
+            border-radius: 3px;
+            opacity: 0.5;
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in {
+            animation: fadeIn 0.3s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- ===== VIEW: CATEGORIES ===== -->
+        <div id="categories-view">
+            <div class="header">
+                <h1>🌹 BlackRose Guides</h1>
+                <p>Справочник гильдии</p>
+            </div>
+            
+            <div class="search-box">
+                <input 
+                    type="search" 
+                    id="search-input" 
+                    placeholder="🔍 Поиск гайда..."
+                    autocomplete="off"
+                >
+            </div>
+            
+            <div id="categories-list" class="category-list"></div>
+        </div>
+        
+        <!-- ===== VIEW: GUIDES IN CATEGORY ===== -->
+        <div id="guides-view" class="hidden">
+            <button class="back-btn" onclick="app.showCategories()">
+                ← Назад
+            </button>
+            <h2 id="category-title" style="margin-bottom: 12px; font-size: 18px;"></h2>
+            <div id="guides-list" class="guide-list"></div>
+        </div>
+        
+        <!-- ===== VIEW: GUIDE CONTENT ===== -->
+        <div id="guide-view" class="hidden">
+            <button class="back-btn" onclick="app.showGuides()">
+                ← Назад
+            </button>
+            <h2 id="guide-title" style="margin-bottom: 8px; font-size: 18px;"></h2>
+            <div id="guide-meta" class="text-hint" style="font-size: 13px; margin-bottom: 12px;"></div>
+            <div id="guide-content" class="guide-content"></div>
+        </div>
+    </div>
+
+    <script>
+        // =====================================================================
+        // TELEGRAM WEBAPP INIT
+        // =====================================================================
+        const tg = window.Telegram?.WebApp;
+        
+        // Моки для локальной разработки
+        if (!tg) {
+            console.log('🔧 Running in development mode (not in Telegram)');
+            window.Telegram = {
+                WebApp: {
+                    ready: () => {},
+                    expand: () => {},
+                    close: () => {},
+                    themeParams: {
+                        bg_color: '#ffffff',
+                        text_color: '#000000',
+                        hint_color: '#999999',
+                        button_color: '#3390ec',
+                        button_text_color: '#ffffff',
+                        secondary_bg_color: '#f5f5f5',
+                        link_color: '#2481cc'
+                    },
+                    initDataUnsafe: {
+                        user: { id: 123456789, username: 'developer', first_name: 'Dev' }
+                    },
+                    showPopup: (params, callback) => {
+                        alert(params.message || params.title || 'Popup');
+                        if (callback) callback('ok');
+                    },
+                    MainButton: {
+                        text: 'Button',
+                        color: '#3390ec',
+                        text_color: '#ffffff',
+                        isVisible: false,
+                        isActive: true,
+                        show: function() { this.isVisible = true; },
+                        hide: function() { this.isVisible = false; },
+                        onClick: function(fn) { this._onClick = fn; },
+                        offClick: function(fn) { this._onClick = null; }
+                    }
+                }
+            };
+        }
+        
+        const webApp = window.Telegram.WebApp;
+        webApp.ready();
+        webApp.expand();
+        webApp.enableClosingConfirmation();
+        
+// ===== УМНОЕ ОПРЕДЕЛЕНИЕ API URL =====
+function getApiUrl() {
+    const hostname = window.location.hostname;
+    
+    // 🔹 Локальная разработка
+    if (hostname === 'localhost' || hostname === '127.0.0.1') {
+        return 'http://127.0.0.1:8000';
+    }
+    
+    // 🔹 ngrok для frontend (порт 3000)
+    if (hostname.includes('ngrok-free.dev')) {
+        // ВАЖНО: Замените на ВАШ backend ngrok URL!
+        return 'https://seasonally-newsiest-brook.ngrok-free.dev';
+        // Пример:
+        // return 'https://backend-abc123def456.ngrok-free.dev';
+    }
+    
+    // 🔹 Railway (когда задеплоите)
+    if (hostname.includes('railway.app')) {
+        // Если backend и frontend на разных сервисах:
+        return 'https://blackrose-miniapp-backend.railway.app';
+        // Если на одном сервисе (через StaticFiles):
+        // return window.location.origin;
+    }
+    
+    // 🔹 По умолчанию: тот же домен
+    return window.location.origin;
+}
+
+const API_URL = 'http://127.0.0.1:8000';
+console.log('📡 API URL:', API_URL);
+// =====================================
+
+        // Эмодзи-фолбэки для категорий (если нет иконки)
+        const CATEGORY_EMOJIS = {
+            'cat_promoutes': '🪨',
+            'info_general': '📜',
+            'adv_adventures': '🌳',
+            'guild_guild': '🛡'
+        };
+        
+        // Эмодзи-фолбэки для гайдов (если нет иконки)
+        const GUIDE_EMOJIS = {
+            'promo_ether': '🔷',
+            'promo_black_mithril': '⚔️',
+            'promo_demonite': '🟩',
+            'promo_dragonos': '🐲',
+            'promo_blood': '🔮',
+            'promo_frost': '🥶',
+            'promo_nox': '😈',
+            'promo_abyss': '🌊',
+            'promo_infinat': '🔴',
+            'promo_cyclone': '🌪',
+            'promo_ancient': '🐉',
+            'promo_gigalor': '🗿',
+            'info_event': '👻',
+            'info_rage': '😤',
+            'info_ads': '📺',
+            'info_pets': '🐾',
+            'info_sword': '⚔️',
+            'info_farm': '💰',
+            'info_spirit': '👻',
+            'adv_cave': '🕳️',
+            'adv_rift': '🌀',
+            'adv_shelter': '🔥',
+            'adv_mind': '🪙',
+            'adv_forest': '🌲',
+            'guild_wyvern': '🐉',
+            'guild_cooking': '🍲'
+        };
+        
+        const app = {
+            state: {
+                currentCategory: null,
+                currentGuide: null,
+                searchQuery: ''
+            },
+            
+            // ===== NAVIGATION =====
+            showView(viewId) {
+                ['categories-view', 'guides-view', 'guide-view'].forEach(id => {
+                    document.getElementById(id).classList.add('hidden');
+                });
+                document.getElementById(viewId).classList.remove('hidden');
+                document.getElementById(viewId).classList.add('fade-in');
+            },
+            
+            showCategories() {
+                app.state.currentCategory = null;
+                app.state.currentGuide = null;
+                app.state.searchQuery = '';
+                document.getElementById('search-input').value = '';
+                app.showView('categories-view');
+                app.loadCategories();
+                webApp.MainButton?.hide();
+            },
+            
+            showGuides() {
+                app.state.currentGuide = null;
+                app.showView('guides-view');
+                if (app.state.currentCategory) {
+                    app.loadGuides(app.state.currentCategory);
+                }
+                webApp.MainButton?.hide();
+            },
+            
+            showGuide(key) {
+                app.state.currentGuide = key;
+                app.showView('guide-view');
+                app.loadGuide(key);
+            },
+            
+            // ===== API REQUESTS =====
+            async fetchAPI(endpoint) {
+                try {
+                    const response = await fetch(`${API_URL}${endpoint}`);
+                    if (!response.ok) {
+                        const error = await response.json().catch(() => ({}));
+                        throw new Error(error.detail?.message || `HTTP ${response.status}`);
+                    }
+                    return await response.json();
+                } catch (error) {
+                    console.error('API Error:', error);
+                    throw error;
+                }
+            },
+            
+            // ===== HELPER: Create icon HTML =====
+            createIconHtml(iconUrl, fallbackEmoji) {
+                if (iconUrl && typeof iconUrl === 'string' && iconUrl.startsWith('http')) {
+                    return `
+                        <div class="card-icon">
+                            <img src="${iconUrl}" alt="" 
+                                 onerror="this.parentElement.innerHTML='<span class=\\'emoji-fallback\\'>${fallbackEmoji}</span>'">
+                        </div>
+                    `;
+                }
+                return `<div class="card-icon"><span class="emoji-fallback">${fallbackEmoji || '📄'}</span></div>`;
+            },
+            
+            // ===== LOAD CATEGORIES =====
+            async loadCategories() {
+                const list = document.getElementById('categories-list');
+                list.innerHTML = '<div class="loading">Загрузка</div>';
+                
+                try {
+                    const data = await app.fetchAPI('/api/categories');
+                    
+                    if (!data.categories?.length) {
+                        list.innerHTML = '<div class="empty"><div class="empty-icon">📭</div><p>Категории не найдены</p></div>';
+                        return;
+                    }
+                    
+                    list.innerHTML = '';
+                    
+                    data.categories.forEach(cat => {
+                        const card = document.createElement('div');
+                        card.className = 'card fade-in';
+                        
+                        // Иконка категории (из API или фолбэк)
+                        const iconHtml = app.createIconHtml(
+                            cat.icon, 
+                            CATEGORY_EMOJIS[cat.key] || '📁'
+                        );
+                        
+                        card.innerHTML = `
+                            ${iconHtml}
+                            <div class="card-content">
+                                <h3>${cat.title}</h3>
+                                <p>${cat.count} гайд${cat.count === 1 ? '' : cat.count < 5 ? 'а' : 'ов'}</p>
+                            </div>
+                        `;
+                        card.onclick = () => app.openCategory(cat.key, cat.title);
+                        list.appendChild(card);
+                    });
+                    
+                } catch (error) {
+                    list.innerHTML = `<div class="error">❌ ${error.message}<br><small class="text-hint">Проверьте подключение</small></div>`;
+                }
+            },
+            
+            async openCategory(key, title) {
+                app.state.currentCategory = key;
+                document.getElementById('category-title').textContent = title;
+                app.showGuides();
+            },
+            
+            // ===== LOAD GUIDES =====
+            async loadGuides(categoryKey) {
+                const list = document.getElementById('guides-list');
+                list.innerHTML = '<div class="loading">Загрузка</div>';
+                
+                try {
+                    const data = await app.fetchAPI(`/api/category/${categoryKey}`);
+                    
+                    if (!data.items?.length) {
+                        list.innerHTML = '<div class="empty"><div class="empty-icon">📭</div><p>Гайды не найдены</p></div>';
+                        return;
+                    }
+                    
+                    list.innerHTML = '';
+                    data.items.forEach(item => {
+                        const card = document.createElement('div');
+                        card.className = 'card fade-in';
+                        
+                        // Иконка гайда (из API или фолбэк)
+                        const iconHtml = app.createIconHtml(
+                            item.icon,
+                            GUIDE_EMOJIS[item.key] || '📄'
+                        );
+                        
+                        card.innerHTML = `
+                            ${iconHtml}
+                            <div class="card-content">
+                                <h3>${item.title}</h3>
+                                <p>${item.preview}</p>
+                                <div class="card-meta">
+                                    ${item.has_photo ? '<span>🖼️</span>' : ''}
+                                    ${item.has_video ? '<span>🎬</span>' : ''}
+                                    ${item.views > 0 ? `<span>👁 ${item.views}</span>` : ''}
+                                </div>
+                            </div>
+                        `;
+                        card.onclick = () => app.showGuide(item.key);
+                        list.appendChild(card);
+                    });
+                    
+                } catch (error) {
+                    list.innerHTML = `<div class="error">❌ ${error.message}</div>`;
+                }
+            },
+            
+            // ===== LOAD GUIDE CONTENT =====
+            async loadGuide(guideKey) {
+                const contentEl = document.getElementById('guide-content');
+                const titleEl = document.getElementById('guide-title');
+                const metaEl = document.getElementById('guide-meta');
+                
+                titleEl.textContent = guideKey;
+                metaEl.textContent = '';
+                contentEl.innerHTML = '<div class="loading">Загрузка</div>';
+                
+                try {
+                    const data = await app.fetchAPI(`/api/guide/${guideKey}`);
+                    
+                    // Мета-информация
+                    const metaParts = [];
+                    if (data.views) metaParts.push(`👁 ${data.views} просмотров`);
+                    if (data.media_count) metaParts.push(`📎 ${data.media_count} медиа`);
+                    metaEl.textContent = metaParts.join(' • ');
+                    
+                    // Контент
+                    let html = '';
+                    
+                    // Фото (если есть) - конвертируем File ID в URL если нужно
+                    if (data.photo) {
+                        const photos = Array.isArray(data.photo) ? data.photo : [data.photo];
+                        for (const src of photos) {
+                            if (src) {
+                                // Если это Telegram File ID (начинается с "Ag"), показываем заглушку
+                                if (typeof src === 'string' && src.startsWith('Ag')) {
+                                    html += `<div style="background:var(--secondary-bg);padding:20px;border-radius:10px;margin:12px 0;text-align:center;color:var(--hint-color)">🖼️ Изображение (нужен URL)</div>`;
+                                } else {
+                                    html += `<img src="${src}" alt="${guideKey}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling?.style.display='block'"><div style="display:none;background:var(--secondary-bg);padding:20px;border-radius:10px;margin:12px 0;text-align:center;color:var(--hint-color)">🖼️ Не удалось загрузить</div>`;
+                                }
+                            }
+                        }
+                    }
+                    
+                    // Текст
+                    if (data.text) {
+                        let text = data.text
+                            .replace(/(https?:\/\/[^\s]+)/g, '<a href="$1" target="_blank" style="color:var(--link-color)">$1</a>')
+                            .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+                            .replace(/\*(.+?)\*/g, '<em>$1</em>');
+                        html += `<div>${text}</div>`;
+                    }
+                    
+                    // Видео
+                    if (data.video) {
+                        const videos = Array.isArray(data.video) ? data.video : [data.video];
+                        videos.forEach(src => {
+                            if (src) {
+                                if (typeof src === 'string' && src.startsWith('BAAC')) {
+                                    html += `<p style="background:var(--secondary-bg);padding:12px;border-radius:8px;margin:8px 0;text-align:center">🎬 Видео (нужен URL)</p>`;
+                                } else {
+                                    html += `<p><a href="${src}" target="_blank" style="color:var(--link-color)">🎬 Открыть видео</a></p>`;
+                                }
+                            }
+                        });
+                    }
+                    
+                    // Документы
+                    if (data.document) {
+                        const docs = Array.isArray(data.document) ? data.document : [data.document];
+                        docs.forEach((src, i) => {
+                            if (src) {
+                                if (typeof src === 'string' && src.startsWith('BQAC')) {
+                                    html += `<p style="background:var(--secondary-bg);padding:12px;border-radius:8px;margin:8px 0;text-align:center">📎 Файл #${i + 1} (нужен URL)</p>`;
+                                } else {
+                                    html += `<p><a href="${src}" target="_blank" style="color:var(--link-color)">📎 Файл #${i + 1}</a></p>`;
+                                }
+                            }
+                        });
+                    }
+                    
+                    contentEl.innerHTML = html || '<p class="text-hint">Контент пуст</p>';
+                    
+                    // Кнопка "Поделиться"
+                    if (webApp?.MainButton) {
+                        webApp.MainButton.setText('📤 Поделиться');
+                        webApp.MainButton.onClick(() => {
+                            const shareText = `🌹 ${guideKey}\n\n${data.text?.substring(0, 200)}...`;
+                            if (webApp.shareUrl) {
+                                webApp.shareUrl(shareText);
+                            } else {
+                                navigator.clipboard?.writeText(shareText);
+                                webApp.showPopup({ message: 'Скопировано в буфер!' }, () => {});
+                            }
+                        });
+                        webApp.MainButton.show();
+                    }
+                    
+                } catch (error) {
+                    contentEl.innerHTML = `<div class="error">❌ ${error.message}<br><button class="back-btn" onclick="app.showGuides()" style="margin-top:12px">← Назад</button></div>`;
+                    webApp.MainButton?.hide();
+                }
+            },
+            
+            // ===== SEARCH =====
+            async handleSearch(query) {
+                query = query.trim();
+                app.state.searchQuery = query;
+                
+                if (query.length < 2) {
+                    app.loadCategories();
+                    return;
+                }
+                
+                const list = document.getElementById('categories-list');
+                list.innerHTML = '<div class="loading">Поиск</div>';
+                
+                try {
+                    const data = await app.fetchAPI(`/api/search?q=${encodeURIComponent(query)}`);
+                    
+                    if (!data.results?.length) {
+                        list.innerHTML = `<div class="empty"><div class="empty-icon">🔍</div><p>Ничего не найдено по запросу "${query}"</p></div>`;
+                        return;
+                    }
+                    
+                    list.innerHTML = '';
+                    data.results.forEach(result => {
+                        const card = document.createElement('div');
+                        card.className = 'card fade-in';
+                        
+                        const iconHtml = app.createIconHtml(
+                            result.icon,
+                            GUIDE_EMOJIS[result.key] || '🔎'
+                        );
+                        
+                        card.innerHTML = `
+                            ${iconHtml}
+                            <div class="card-content">
+                                <h3>${result.title}</h3>
+                                <p>${result.preview}</p>
+                                ${result.views > 0 ? `<div class="card-meta"><span>👁 ${result.views}</span></div>` : ''}
+                            </div>
+                        `;
+                        card.onclick = () => app.showGuide(result.key);
+                        list.appendChild(card);
+                    });
+                    
+                } catch (error) {
+                    list.innerHTML = `<div class="error">❌ Ошибка поиска</div>`;
+                }
+            }
+        };
+        
+        // =====================================================================
+        // EVENT LISTENERS
+        // =====================================================================
+        
+        let searchTimeout;
+        document.getElementById('search-input').addEventListener('input', (e) => {
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(() => {
+                app.handleSearch(e.target.value);
+            }, 300);
+        });
+        
+        if (webApp?.BackButton) {
+            webApp.BackButton.onClick(() => {
+                if (!document.getElementById('guide-view').classList.contains('hidden')) {
+                    app.showGuides();
+                } else if (!document.getElementById('guides-view').classList.contains('hidden')) {
+                    app.showCategories();
+                }
+            });
+        }
+        
+        // =====================================================================
+        // INIT
+        // =====================================================================
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('🚀 BlackRose Mini App initialized');
+            console.log('📡 API URL:', API_URL);
+            app.loadCategories();
+        });
+    </script>
+</body>
+</html>

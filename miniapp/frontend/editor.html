@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlackRose - Редактор гайдов</title>
+    <style>
+        :root {
+            --tg-bg: #1c1c1e;
+            --tg-secondary: #2c2c2e;
+            --tg-text: #ffffff;
+            --tg-hint: #8e8e93;
+            --tg-button: #3390ec;
+            --tg-danger: #ff3b30;
+            --tg-success: #34c759;
+            --tg-warning: #ff9500;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--tg-bg);
+            color: var(--tg-text);
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 10px;
+            color: var(--tg-button);
+            font-size: 28px;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: var(--tg-hint);
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+        
+        /* Stats */
+        .stats {
+            background: var(--tg-secondary);
+            padding: 20px;
+            border-radius: 16px;
+            margin-bottom: 30px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 15px;
+            background: var(--tg-bg);
+            border-radius: 12px;
+        }
+        
+        .stat-value {
+            font-size: 32px;
+            font-weight: bold;
+            color: var(--tg-button);
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 13px;
+            color: var(--tg-hint);
+        }
+        
+        /* Guide List */
+        .guide-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .guide-card {
+            background: var(--tg-secondary);
+            border-radius: 14px;
+            padding: 18px;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 2px solid transparent;
+        }
+        
+        .guide-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+            border-color: var(--tg-button);
+        }
+        
+        .guide-card.active {
+            border-color: var(--tg-success);
+            box-shadow: 0 0 0 3px rgba(52, 199, 89, 0.2);
+        }
+        
+        .guide-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+        }
+        
+        .guide-title {
+            font-size: 17px;
+            font-weight: 600;
+            flex: 1;
+        }
+        
+        .guide-category {
+            font-size: 12px;
+            color: var(--tg-hint);
+            background: var(--tg-bg);
+            padding: 4px 10px;
+            border-radius: 12px;
+            margin-left: 10px;
+        }
+        
+        .guide-meta {
+            display: flex;
+            gap: 12px;
+            font-size: 13px;
+            color: var(--tg-hint);
+            flex-wrap: wrap;
+        }
+        
+        .guide-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .badge-photo { background: rgba(51, 144, 236, 0.2); color: var(--tg-button); }
+        .badge-video { background: rgba(255, 59, 48, 0.2); color: var(--tg-danger); }
+        .badge-doc { background: rgba(255, 149, 0, 0.2); color: var(--tg-warning); }
+        .badge-empty { background: rgba(142, 142, 147, 0.2); color: var(--tg-hint); }
+        
+        /* Preview Section */
+        .preview-section {
+            background: var(--tg-secondary);
+            border-radius: 16px;
+            padding: 25px;
+            margin-top: 20px;
+            display: none;
+        }
+        
+        .preview-section.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .preview-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--tg-bg);
+        }
+        
+        .preview-title {
+            font-size: 22px;
+            font-weight: 600;
+        }
+        
+        .preview-category-badge {
+            display: inline-block;
+            padding: 6px 14px;
+            background: var(--tg-button);
+            border-radius: 20px;
+            font-size: 13px;
+            margin-bottom: 15px;
+        }
+        
+        /* Images Grid */
+        .images-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 12px;
+            margin: 20px 0;
+        }
+        
+        .image-item {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            background: var(--tg-bg);
+            aspect-ratio: 16/9;
+        }
+        
+        .image-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .image-item .remove-btn {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: var(--tg-danger);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+        
+        .image-item:hover .remove-btn {
+            opacity: 1;
+        }
+        
+        .image-placeholder {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--tg-bg);
+            color: var(--tg-hint);
+            font-size: 14px;
+            border: 2px dashed var(--tg-hint);
+            border-radius: 12px;
+            padding: 40px;
+        }
+        
+        /* Text Preview */
+        .text-preview {
+            background: var(--tg-bg);
+            padding: 20px;
+            border-radius: 12px;
+            white-space: pre-wrap;
+            font-size: 15px;
+            line-height: 1.7;
+            margin-top: 15px;
+        }
+        
+        /* URL Inputs */
+        .url-section {
+            margin: 20px 0;
+            padding: 20px;
+            background: var(--tg-bg);
+            border-radius: 12px;
+        }
+        
+        .url-section h3 {
+            margin-bottom: 12px;
+            font-size: 16px;
+            color: var(--tg-button);
+        }
+        
+        .url-input {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            background: var(--tg-secondary);
+            border: 1px solid var(--tg-hint);
+            border-radius: 8px;
+            color: var(--tg-text);
+            font-size: 13px;
+            font-family: monospace;
+        }
+        
+        .url-input:focus {
+            outline: none;
+            border-color: var(--tg-button);
+        }
+        
+        .url-input::placeholder {
+            color: var(--tg-hint);
+        }
+        
+        .add-url-btn {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background: var(--tg-success);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        /* Buttons */
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .btn:hover { transform: translateY(-2px); }
+        .btn-primary { background: var(--tg-button); color: white; }
+        .btn-success { background: var(--tg-success); color: white; }
+        .btn-danger { background: var(--tg-danger); color: white; }
+        .btn-secondary { background: var(--tg-hint); color: white; }
+        
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--tg-hint);
+        }
+        
+        .empty-icon {
+            font-size: 64px;
+            margin-bottom: 20px;
+            opacity: 0.5;
+        }
+        
+        /* Loading */
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: var(--tg-hint);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .guide-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌹 BlackRose Guides Editor</h1>
+        <p class="subtitle">Редактор гайдов для Telegram Mini App</p>
+        
+        <!-- Statistics -->
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-value" id="stat-total">0</div>
+                <div class="stat-label">Всего гайдов</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="stat-photos">0</div>
+                <div class="stat-label">Фотографий</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="stat-videos">0</div>
+                <div class="stat-label">Видео</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="stat-docs">0</div>
+                <div class="stat-label">Документов</div>
+            </div>
+        </div>
+        
+        <!-- Guide List -->
+        <div id="guide-list" class="guide-list"></div>
+        
+        <!-- Preview Section -->
+        <div id="preview-section" class="preview-section">
+            <div class="preview-header">
+                <h2 class="preview-title" id="preview-title">Предпросмотр</h2>
+                <button class="btn btn-secondary" onclick="closePreview()">✕ Закрыть</button>
+            </div>
+            <div id="preview-category" class="preview-category-badge"></div>
+            
+            <!-- Images -->
+            <div id="preview-images" class="images-grid"></div>
+            
+            <!-- Text -->
+            <div id="preview-text" class="text-preview"></div>
+            
+            <!-- URL Inputs -->
+            <div class="url-section">
+                <h3> URL изображений</h3>
+                <div id="url-inputs"></div>
+                <button class="add-url-btn" onclick="addUrlInput()">+ Добавить URL</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const API_URL = window.location.hostname === 'localhost' 
+            ? 'http://127.0.0.1:8000' 
+            : window.location.origin;
+        
+        let currentGuide = null;
+        let guidesData = {};
+        let categoriesData = {};
+        let categoryMap = {};
+        
+        // Build category map
+        function buildCategoryMap() {
+            fetch(`${API_URL}/api/categories`)
+                .then(r => r.json())
+                .then(data => {
+                    categoriesData = data;
+                    data.categories.forEach(cat => {
+                        fetch(`${API_URL}/api/category/${cat.key}`)
+                            .then(r => r.json())
+                            .then(catData => {
+                                catData.items.forEach(item => {
+                                    categoryMap[item.key] = cat.title;
+                                });
+                            });
+                    });
+                });
+        }
+        
+        // Load all guides
+        async function loadGuides() {
+            try {
+                const response = await fetch(`${API_URL}/api/info`);
+                guidesData = await response.json();
+                renderStats();
+                renderGuideList();
+            } catch (error) {
+                console.error('Error loading guides:', error);
+                document.getElementById('guide-list').innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-icon">❌</div>
+                        <p>Ошибка загрузки данных</p>
+                        <p style="font-size: 12px; margin-top: 10px;">${error.message}</p>
+                    </div>
+                `;
+            }
+        }
+        
+        function renderStats() {
+            document.getElementById('stat-total').textContent = guidesData.total_guides || 0;
+            document.getElementById('stat-photos').textContent = guidesData.total_photos || 0;
+            document.getElementById('stat-videos').textContent = guidesData.total_videos || 0;
+            document.getElementById('stat-docs').textContent = guidesData.total_documents || 0;
+        }
+        
+        async function renderGuideList() {
+            const list = document.getElementById('guide-list');
+            
+            if (!categoriesData.categories) {
+                list.innerHTML = '<div class="loading">Загрузка...</div>';
+                return;
+            }
+            
+            list.innerHTML = '';
+            
+            for (const category of categoriesData.categories) {
+                const catResponse = await fetch(`${API_URL}/api/category/${category.key}`);
+                const catData = await catResponse.json();
+                
+                catData.items.forEach(item => {
+                    const card = createGuideCard(item, category);
+                    list.appendChild(card);
+                });
+            }
+        }
+        
+        function createGuideCard(item, category) {
+            const card = document.createElement('div');
+            card.className = 'guide-card';
+            
+            const photoCount = item.photo?.length || 0;
+            const videoCount = item.video?.length || 0;
+            const docCount = item.document?.length || 0;
+            
+            let badges = '';
+            if (photoCount > 0) badges += `<span class="badge badge-photo">📷 ${photoCount}</span>`;
+            if (videoCount > 0) badges += `<span class="badge badge-video">🎬 ${videoCount}</span>`;
+            if (docCount > 0) badges += `<span class="badge badge-doc">📄 ${docCount}</span>`;
+            if (!badges) badges = '<span class="badge badge-empty">📝 Только текст</span>';
+            
+            card.innerHTML = `
+                <div class="guide-header">
+                    <div class="guide-title">${item.title}</div>
+                    <div class="guide-category">${category.title}</div>
+                </div>
+                <div class="guide-meta">
+                    ${badges}
+                    <span>📝 ${(item.text?.length || 0) / 100 | 0} строк</span>
+                </div>
+            `;
+            
+            card.onclick = () => showPreview(item.key);
+            return card;
+        }
+        
+        async function showPreview(guideKey) {
+            try {
+                const response = await fetch(`${API_URL}/api/guide/${guideKey}`);
+                const guide = await response.json();
+                
+                currentGuide = guide;
+                const section = document.getElementById('preview-section');
+                const title = document.getElementById('preview-title');
+                const catBadge = document.getElementById('preview-category');
+                const images = document.getElementById('preview-images');
+                const text = document.getElementById('preview-text');
+                const urlInputs = document.getElementById('url-inputs');
+                
+                title.textContent = guide.title || guideKey;
+                catBadge.textContent = categoryMap[guideKey] || 'Категория';
+                
+                // Images
+                images.innerHTML = '';
+                if (guide.photo?.length) {
+                    guide.photo.forEach((url, idx) => {
+                        const div = document.createElement('div');
+                        div.className = 'image-item';
+                        div.innerHTML = `
+                            <img src="${url}" alt="${guideKey}" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22225%22><rect fill=%22%23333%22 width=%22400%22 height=%22225%22/><text fill=%22%23999%22 x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22>Не загружается</text></svg>'">
+                            <button class="remove-btn" onclick="event.stopPropagation(); removeImage('${guideKey}', ${idx})">✕</button>
+                        `;
+                        images.appendChild(div);
+                    });
+                } else {
+                    images.innerHTML = '<div class="image-placeholder">📷 Нет фотографий<br><small>Добавьте URL ниже</small></div>';
+                }
+                
+                // Text
+                text.textContent = guide.text || 'Нет описания';
+                
+                // URL Inputs
+                urlInputs.innerHTML = '';
+                if (guide.photo?.length) {
+                    guide.photo.forEach((url, idx) => {
+                        const input = document.createElement('input');
+                        input.type = 'text';
+                        input.className = 'url-input';
+                        input.value = url;
+                        input.placeholder = `URL изображения #${idx + 1}`
+                        input.onchange = (e) => updateImageUrl(guideKey, idx, e.target.value);
+                        urlInputs.appendChild(input);
+                    });
+                } else {
+                    urlInputs.innerHTML = '<p style="color: var(--tg-hint); font-size: 13px;">Нажмите "+ Добавить URL" чтобы добавить изображения</p>';
+                }
+                
+                section.classList.add('active');
+                section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                
+                // Highlight card
+                document.querySelectorAll('.guide-card').forEach(c => c.classList.remove('active'));
+                event.target.closest('.guide-card')?.classList.add('active');
+                
+            } catch (error) {
+                console.error('Error loading guide:', error);
+                alert('Ошибка загрузки гайда: ' + error.message);
+            }
+        }
+        
+        function closePreview() {
+            document.getElementById('preview-section').classList.remove('active');
+            currentGuide = null;
+        }
+        
+        function addUrlInput() {
+            const urlInputs = document.getElementById('url-inputs');
+            const count = urlInputs.querySelectorAll('.url-input').length + 1;
+            const input = document.createElement('input');
+            input.type = 'text';
+            input.className = 'url-input';
+            input.placeholder = `URL изображения #${count} (например: https://i.imgur.com/abc123.png)`;
+            urlInputs.appendChild(input);
+            input.focus();
+        }
+        
+        function removeImage(guideKey, index) {
+            if (confirm('Удалить это изображение?')) {
+                console.log('Remove image:', guideKey, index);
+                // Здесь можно добавить API вызов
+            }
+        }
+        
+        function updateImageUrl(guideKey, index, newUrl) {
+            console.log('Update image URL:', guideKey, index, newUrl);
+            // Здесь можно добавить API вызов для сохранения
+        }
+        
+        // Initialize
+        buildCategoryMap();
+        loadGuides();
+    </script>
+</body>
+</html>
