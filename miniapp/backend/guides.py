@@ -1,28 +1,23 @@
-"""
-BlackRose Mini App - Гайды с иконками-изображениями
-Все эмодзи заменены на URL изображений
-"""
-
 # ═══════════════════════════════════════════════════════
 # 📋 КАТЕГОРИИ (с иконками)
 # ═══════════════════════════════════════════════════════
 MAIN_CATEGORIES = {
     "cat_promoutes": {
         "title": "Промоуты",
-        "icon": "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/cat_promoutes.png",
+        "icon": "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/cat_promoutes.png"
     },
     "info_general": {
         "title": "Общая информация",
-        "icon": "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/info_general.png",
+        "icon": "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/info_general.png"
     },
     "adv_adventures": {
         "title": "Приключения",
-        "icon": "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/adv_adventures.png",
+        "icon": "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/adv_adventures.png"
     },
     "guild_guild": {
         "title": "Гильдия",
-        "icon": "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/guild_guild.png",
-    },
+        "icon": "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/guild_guild.png"
+    }
 }
 
 # ═══════════════════════════════════════════════════════
@@ -30,143 +25,39 @@ MAIN_CATEGORIES = {
 # ═══════════════════════════════════════════════════════
 SUBMENUS = {
     "cat_promoutes": [
-        (
-            "promo_ether",
-            "Эфир",
-            "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/promo_ether.png",
-        ),
-        (
-            "promo_black_mithril",
-            "Чёрный Мифрил",
-            "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/promo_black_mithril.png",
-        ),
-        (
-            "promo_demonite",
-            "Демонит",
-            "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/promo_demonite.png",
-        ),
-        (
-            "promo_dragonos",
-            "Драгонос",
-            "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/promo_dragonos.png",
-        ),
-        (
-            "promo_blood",
-            "Кровь Великих",
-            "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/promo_blood.png",
-        ),
-        (
-            "promo_frost",
-            "Иней Войны",
-            "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/promo_frost.png",
-        ),
-        (
-            "promo_nox",
-            "Тёмный Нокс",
-            "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/promo_nox.png",
-        ),
-        (
-            "promo_abyss",
-            "Синяя Бездна",
-            "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/promo_abyss.png",
-        ),
-        (
-            "promo_infinat",
-            "Инфинат",
-            "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/promo_infinat.png",
-        ),
-        (
-            "promo_cyclone",
-            "Циклон",
-            "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/promo_cyclone.png",
-        ),
-        (
-            "promo_ancient",
-            "Эйшенткенаин",
-            "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/promo_ancient.png",
-        ),
-        (
-            "promo_gigalor",
-            "Гигалор",
-            "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/promo_gigalor.png",
-        ),
+        ("promo_ether", "Эфир", "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/Ether.png"),
+        ("promo_black_mithril", "Чёрный Мифрил", "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/promo_black_mithril.png"),
+        ("promo_demonite", "Демонит", "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/Demon Metal.png"),
+        ("promo_dragonos", "Драгонос", "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/Dragonos.png"),
+        ("promo_blood", "Кровь Великих", "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/Ragnablood.png"),
+        ("promo_frost", "Иней Войны", "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/Warfrost.png"),
+        ("promo_nox", "Тёмный Нокс", "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/Dark Nox.png"),
+        ("promo_abyss", "Синяя Бездна", "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/Blue Abyss.png"),
+        ("promo_infinat", "Инфинат", "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/Infinaut.png"),
+        ("promo_cyclone", "Циклон", "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/Cyclos.png"),
+        ("promo_ancient", "Эйшенткенаин", "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/Ancient Canine.png"),
+        ("promo_gigalor", "Гигалор", "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/Gigarock.png"),
     ],
     "info_general": [
-        (
-            "info_event",
-            "Что покупать на ивенте?",
-            "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/info_event.png",
-        ),
-        (
-            "info_rage",
-            "Как играть с Яростью?",
-            "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/info_rage.png",
-        ),
-        (
-            "info_ads",
-            "Просмотр рекламы",
-            "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/info_ads.png",
-        ),
-        (
-            "info_pets",
-            "Прокачка спутников",
-            "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/info_pets.png",
-        ),
-        (
-            "info_sword",
-            "Меч душ и гравировка",
-            "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/info_sword.png",
-        ),
-        (
-            "info_farm",
-            "Фарм этапов",
-            "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/info_farm.png",
-        ),
-        (
-            "info_spirit",
-            "Духи/Spirits",
-            "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/info_spirit.png",
-        ),
+        ("info_event", "Что покупать на ивенте?", "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/info_event.png"),
+        ("info_rage", "Как играть с Яростью?", "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/info_rage.png"),
+        ("info_ads", "Просмотр рекламы", "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/info_ads.png"),
+        ("info_pets", "Прокачка спутников", "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/info_pets.png"),
+        ("info_sword", "Меч душ и гравировка", "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/info_sword.png"),
+        ("info_farm", "Фарм этапов", "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/info_farm.png"),
+        ("info_spirit", "Духи/Spirits", "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/info_spirit.png"),
     ],
     "adv_adventures": [
-        (
-            "adv_cave",
-            "Учебная пещера",
-            "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/adv_cave.png",
-        ),
-        (
-            "adv_rift",
-            "Межпространственный разлом",
-            "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/adv_rift.png",
-        ),
-        (
-            "adv_shelter",
-            "Приют Спящего Пламени",
-            "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/adv_shelter.png",
-        ),
-        (
-            "adv_mind",
-            "Золотой рудник",
-            "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/adv_mind.png",
-        ),
-        (
-            "adv_forest",
-            "Лес циркуляции",
-            "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/adv_forest.png",
-        ),
+        ("adv_cave", "Учебная пещера", "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/adv_cave.png"),
+        ("adv_rift", "Межпространственный разлом", "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/adv_rift.png"),
+        ("adv_shelter", "Приют Спящего Пламени", "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/adv_shelter.png"),
+        ("adv_mind", "Золотой рудник", "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/adv_mind.png"),
+        ("adv_forest", "Лес циркуляции", "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/adv_forest.png"),
     ],
     "guild_guild": [
-        (
-            "guild_wyvern",
-            "Виверна",
-            "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/guild_wyvern.png",
-        ),
-        (
-            "guild_cooking",
-            "Приготовление блюд",
-            "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/guild_cooking.png",
-        ),
-    ],
+        ("guild_wyvern", "Виверна", "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/guild_wyvern.png"),
+        ("guild_cooking", "Приготовление блюд", "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/guild_cooking.png"),
+    ]
 }
 
 # ═══════════════════════════════════════════════════════
@@ -177,8 +68,8 @@ CONTENT = {
     # 🪨 ПРОМОУТЫ
     "promo_ether": {
         "title": "Эфир | Ether",
-        "icon": "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/promo_ether.png",
-        "text": """🔷 Гайд на Эфир | Ether 🔷
+        "icon": "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/Ether.png",
+        "text": """🔷 **Гайд на Эфир | Ether** 🔷
 
 📊 **Характеристики:**
 • Ориентировочный этап: 340 ± 5
@@ -200,8 +91,9 @@ CONTENT = {
 • Оптимально для этапа 340""",
         "photo": [],  # 🔽 ЗАМЕНИТЕ НА URL: ["https://i.imgur.com/abc123.png"]
         "video": None,
-        "document": None,
+        "document": None
     },
+    
     "promo_black_mithril": {
         "title": "Чёрный Мифрил | Black Mythril",
         "icon": "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/promo_black_mithril.png",
@@ -229,12 +121,13 @@ CONTENT = {
 • С Бредом у Sala можно больше E1""",
         "photo": [],  # 🔽 Добавьте URL
         "video": None,
-        "document": None,
+        "document": None
     },
+    
     "promo_demonite": {
         "title": "Демонит | Demon Metal",
-        "icon": "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/promo_demonite.png",
-        "text": """🟩 **Гайд на Демонит** 🟩
+        "icon": "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/Demon Metal.png",
+        "text": """ **Гайд на Демонит** 
 
 📊 **Характеристики:**
 • Ориентировочный этап: 550 ± 5
@@ -257,11 +150,12 @@ CONTENT = {
 • Вода, Камень, Огонь""",
         "photo": [],
         "video": None,
-        "document": None,
+        "document": None
     },
+    
     "promo_dragonos": {
         "title": "Драгонос | Dragonos",
-        "icon": "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/promo_dragonos.png",
+        "icon": "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/Dragonos.png",
         "text": """🐲 **Гайд на Драгонос** 🐲
 
 📊 **Характеристики:**
@@ -289,11 +183,12 @@ CONTENT = {
 • Огня и камня: 3-4к""",
         "photo": [],
         "video": None,
-        "document": None,
+        "document": None
     },
+    
     "promo_blood": {
         "title": "Кровь Великих | Ragna Blood",
-        "icon": "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/promo_blood.png",
+        "icon": "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/Ragnablood.png",
         "text": """🔮 **Гайд на Кровь Великих** 🔮
 
 📊 **Характеристики:**
@@ -321,11 +216,12 @@ CONTENT = {
 • Вода, Камень, Огонь""",
         "photo": [],
         "video": None,
-        "document": None,
+        "document": None
     },
+    
     "promo_frost": {
         "title": "Иней Войны | War Frost",
-        "icon": "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/promo_frost.png",
+        "icon": "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/Warfrost.png",
         "text": """🥶 **Гайд на Иней Войны** 🥶
 
 📊 **Характеристики:**
@@ -353,11 +249,12 @@ CONTENT = {
 • Вода, Земля, Огонь""",
         "photo": [],
         "video": None,
-        "document": None,
+        "document": None
     },
+    
     "promo_nox": {
         "title": "Тёмный Нокс | Dark Nox",
-        "icon": "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/promo_nox.png",
+        "icon": "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/Dark Nox.png",
         "text": """😈 **Гайд на Тёмный Нокс** 😈
 
 📊 **Характеристики:**
@@ -386,11 +283,12 @@ CONTENT = {
 На этом промоуте игроки могут делать больший упор в меч или в класс. Если у вас условный сид, то меч будет хуже. Также с реликвиями: если меньше крита, то больше атаки. Не обязательно делать всё так же!""",
         "photo": [],
         "video": None,
-        "document": None,
+        "document": None
     },
+    
     "promo_abyss": {
         "title": "Синяя Бездна | Blue Abyss",
-        "icon": "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/promo_abyss.png",
+        "icon": "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/Blue Abyss.png",
         "text": """🌊 **Гайд на Синюю Бездну** 🌊
 
 📊 **Характеристики:**
@@ -419,11 +317,12 @@ CONTENT = {
 • Вода, Камень, Огонь""",
         "photo": [],
         "video": None,
-        "document": None,
+        "document": None
     },
+    
     "promo_infinat": {
         "title": "Инфинат | Inflnat",
-        "icon": "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/promo_infinat.png",
+        "icon": "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/Infinaut.png",
         "text": """🔴 **Гайд на Инфинат** 🔴
 
 📊 **Характеристики:**
@@ -457,11 +356,12 @@ CONTENT = {
 У кого-то может быть наоборот: есть нова, но нет фулл меча""",
         "photo": [],
         "video": None,
-        "document": None,
+        "document": None
     },
+    
     "promo_cyclone": {
         "title": "Циклон | Ciclos",
-        "icon": "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/promo_cyclone.png",
+        "icon": "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/Cyclos.png",
         "text": """🌪 **Гайд на Циклон** 🌪
 
 📊 **Характеристики:**
@@ -490,11 +390,12 @@ CONTENT = {
 • Вода, Камень, Огонь""",
         "photo": [],
         "video": None,
-        "document": None,
+        "document": None
     },
+    
     "promo_ancient": {
         "title": "Эйшенткенаин | Ancient Canine",
-        "icon": "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/promo_ancient.png",
+        "icon": "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/Ancient Canine.png",
         "text": """🐉 **Гайд на Эйшенткенаин** 🐉
 
 ⚠️ **Дисклеймер:**
@@ -531,11 +432,12 @@ CONTENT = {
 • Земли: 35-40а (если используете Охоту на демонов)""",
         "photo": [],
         "video": None,
-        "document": None,
+        "document": None
     },
+    
     "promo_gigalor": {
         "title": "Гигалор | Gigarock",
-        "icon": "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/promo_gigalor.png",
+        "icon": "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/Gigarock.png",
         "text": """🗿 **Гайд на Гигалор** 🗿
 
 📊 **Характеристики:**
@@ -565,8 +467,9 @@ CONTENT = {
 Статы максимально примерные! У кого-то может не быть 8 фамильяра или высокого уровня 🔥 или других баффающих навыков.""",
         "photo": [],
         "video": None,
-        "document": None,
+        "document": None
     },
+    
     # 📜 ОБЩАЯ ИНФОРМАЦИЯ
     "info_event": {
         "title": "Что покупать на ивенте?",
@@ -591,8 +494,9 @@ CONTENT = {
 Не стоит менять на АЛМАЗЫ, только покупка по приоритету!""",
         "photo": [],
         "video": None,
-        "document": None,
+        "document": None
     },
+    
     "info_rage": {
         "title": "Как играть с Яростью?",
         "icon": "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/info_rage.png",
@@ -607,8 +511,9 @@ CONTENT = {
 • Комбинируйте с другими навыками""",
         "photo": [],
         "video": [],  # 🔽 Добавьте URL видео
-        "document": None,
+        "document": None
     },
+    
     "info_ads": {
         "title": "Просмотр рекламы",
         "icon": "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/info_ads.png",
@@ -626,8 +531,9 @@ CONTENT = {
 Можно смотреть рекламу без VPN, но с ограничениями""",
         "photo": [],
         "video": None,
-        "document": None,
+        "document": None
     },
+    
     "info_pets": {
         "title": "Прокачка спутников",
         "icon": "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/info_pets.png",
@@ -645,8 +551,9 @@ CONTENT = {
 • Следуйте приоритетам из гайдов""",
         "photo": [],
         "video": None,
-        "document": None,
+        "document": None
     },
+    
     "info_sword": {
         "title": "Меч душ и гравировка",
         "icon": "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/info_sword.png",
@@ -677,8 +584,9 @@ CONTENT = {
 Оружие Души может отдавать предпочтение критическим блокам""",
         "photo": [],
         "video": None,
-        "document": [],  # 🔽 Добавьте URL документов
+        "document": []  # 🔽 Добавьте URL документов
     },
+    
     "info_farm": {
         "title": "Фарм этапов",
         "icon": "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/info_farm.png",
@@ -709,8 +617,9 @@ CONTENT = {
 • Нельзя выбирать где фармить""",
         "photo": [],
         "video": None,
-        "document": None,
+        "document": None
     },
+    
     "info_spirit": {
         "title": "Духи/Spirits",
         "icon": "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/info_spirit.png",
@@ -758,8 +667,9 @@ Nerh, Ark, Boo, Kart, Sala, Luga
 После 12/12 Мифических духов выбирайте вариант с 4 равными полосами. Статистика повышается на 20%!""",
         "photo": [],
         "video": None,
-        "document": None,
+        "document": None
     },
+    
     # 🌳 ПРИКЛЮЧЕНИЯ
     "adv_cave": {
         "title": "Учебная пещера",
@@ -775,8 +685,9 @@ Nerh, Ark, Boo, Kart, Sala, Luga
 • Простые враги""",
         "photo": [],
         "video": None,
-        "document": None,
+        "document": None
     },
+    
     "adv_rift": {
         "title": "Межпространственный разлом",
         "icon": "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/adv_rift.png",
@@ -791,8 +702,9 @@ Nerh, Ark, Boo, Kart, Sala, Luga
 • Сложные враги""",
         "photo": [],
         "video": None,
-        "document": None,
+        "document": None
     },
+    
     "adv_shelter": {
         "title": "Приют Спящего Пламени",
         "icon": "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/adv_shelter.png",
@@ -807,8 +719,9 @@ Nerh, Ark, Boo, Kart, Sala, Luga
 • Ценные ресурсы""",
         "photo": [],
         "video": None,
-        "document": None,
+        "document": None
     },
+    
     "adv_mind": {
         "title": "Золотой рудник",
         "icon": "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/adv_mind.png",
@@ -839,8 +752,9 @@ Nerh, Ark, Boo, Kart, Sala, Luga
 Используйте обычную ежедневную прокрутку кубов - получаете больше кубов от мобов""",
         "photo": [],
         "video": None,
-        "document": None,
+        "document": None
     },
+    
     "adv_forest": {
         "title": "Лес циркуляции",
         "icon": "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/adv_forest.png",
@@ -855,8 +769,9 @@ Nerh, Ark, Boo, Kart, Sala, Luga
 • Используйте правильную стихию""",
         "photo": [],
         "video": None,
-        "document": None,
+        "document": None
     },
+    
     # 🛡 ГИЛЬДИЯ
     "guild_wyvern": {
         "title": "Виверна",
@@ -883,8 +798,9 @@ Nerh, Ark, Boo, Kart, Sala, Luga
 • Координируйтесь с гильдией""",
         "photo": [],
         "video": None,
-        "document": None,
+        "document": None
     },
+    
     "guild_cooking": {
         "title": "Приготовление блюд",
         "icon": "https://raw.githubusercontent.com/Nihronick/blackrose-bot/main/public/images/icons/guild_cooking.png",
@@ -919,10 +835,9 @@ Nerh, Ark, Boo, Kart, Sala, Luga
 Следуйте указаниям ГМ каждый сезон!""",
         "photo": [],
         "video": None,
-        "document": None,
+        "document": None
     },
 }
-
 
 # ═══════════════════════════════════════════════════════
 # 📊 СТАТИСТИКА
@@ -934,7 +849,7 @@ def get_stats():
     total_photos = sum(len(guide.get("photo", []) or []) for guide in CONTENT.values())
     total_videos = sum(len(guide.get("video", []) or []) for guide in CONTENT.values())
     total_documents = sum(len(guide.get("document", []) or []) for guide in CONTENT.values())
-
+    
     return {
         "total_guides": total_guides,
         "total_categories": total_categories,
