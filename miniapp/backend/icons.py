@@ -149,12 +149,8 @@ SPIRIT = {
     "familiar_tikuna": _url("spirit/familiar_tikuna.png"),
     "familiar_a": _url("spirit/familiar_a.png"),
     # Звёзды
-    "star_1": _url("spirit/star_1.png"),
-    "star_3": _url("spirit/star_3.png"),
-    "star_5": _url("spirit/star_5.png"),
-    "star_6": _url("spirit/star_6.png"),
-    "star_7": _url("spirit/star_7.png"),
-    "star_8": _url("spirit/star_8.png"),
+    "star": _url("class_etc/star.png"),
+    "starv2": _url("class_etc/star_v2.png"),
     "awaken_e": _url("spirit/awaken_e.png"),
     "awaken_a": _url("spirit/awaken_a.png"),
 }
@@ -178,12 +174,12 @@ INFO_CATEGORIES = {
 # ПРИКЛЮЧЕНИЯ
 # ═══════════════════════════════════════════════════════
 ADVENTURES = {
-    "adv_adventures": _url("adv_adventures.png"),
-    "adv_cave": _url("adv_cave.png"),
-    "adv_rift": _url("adv_rift.png"),
-    "adv_shelter": _url("adv_shelter.png"),
-    "adv_mind": _url("adv_mind.png"),
-    "adv_forest": _url("adv_forest.png"),
+    "adv_adventures": _url("class_etc/adventure.png"),
+    "adv_cave": _url("class_etc/exp.png"),
+    "adv_rift": _url("class_etc/violet_cube.png"),
+    "adv_shelter": _url("class_etc/latent_power.png"),
+    "adv_mind": _url("class_etc/coin.png"),
+    "adv_forest": _url("class_etc/forest.png"),
 }
 
 # ═══════════════════════════════════════════════════════
