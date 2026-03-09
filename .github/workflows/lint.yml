@@ -7,23 +7,6 @@ on:
     branches: [main]
 
 jobs:
-  lint-miniapp:
-    runs-on: ubuntu-latest
-    
-    steps:
-    - uses: actions/checkout@v3
-    
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.10'
-    
-    - name: Install dependencies
-      working-directory: ./miniapp/backend
-      run: |
-        python -m pip install --upgrade pip
-        pip install black ruff isort
-    
     - name: Check with Black
       working-directory: ./miniapp/backend
       run: black --check .
@@ -38,7 +21,7 @@ jobs:
   
   lint-bot:
     runs-on: ubuntu-latest
-    
+
     steps:
     - uses: actions/checkout@v3
     
