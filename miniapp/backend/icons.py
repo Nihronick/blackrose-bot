@@ -36,8 +36,9 @@ CLASS_ETC = {
     "sword_awaken": _url("class_etc/awaken.png"),
     "sword_absolutev1": _url("class_etc/AbsoluteV1.png"),
     "sword_absolutev2": _url("class_etc/AbsoluteV2.gif"),
-    "sword_immortal": _url("class_etc/immortl_sword.png")
+    "sword_immortal": _url("class_etc/immortl_sword.png"),
     # Другое
+    "soul_sword": _url("class_etc/soul_sword.png"),
     "stage": _url("class_etc/stage.png"),
     "ds": _url("class_etc/ds.png"),
     "attack": _url("class_etc/attack.png"),
@@ -52,6 +53,10 @@ CLASS_ETC = {
     "diamond": _url("class_etc/diamond.png"),
     "gold": _url("class_etc/gold.png"),
     "gem": _url("class_etc/gem.png"),
+    "earth": _url("class_etc/zeke_gem.png"),
+    "fire": _url("class_etc/FIRE_GEM.png"),
+    "water": _url("class_etc/luna_gem.png"),
+    "wind": _url("class_etc/ellie_gem.png"),
 }
 
 # ═══════════════════════════════════════════════════════
@@ -147,14 +152,14 @@ SPIRIT = {
     "skill_radon": _url("spirits/raddon_skill.png"),
     "skill_zappy": _url("spirits/zappy_skill.png"),
     "skill_kart": _url("spirits/kart_skill.png"),
-    #"skill_herh": _url("spirits/Herh.png"),
+    "skill_herh": _url("spirits/herh_skill.png"),
     "skill_todd": _url("spirits/todd_skill.png"),
     "skill_luga": _url("spirits/luga_skill.png"),
-    #"skill_ark": _url("spirits/Ark.png"),
+    "skill_ark": _url("spirits/ark_skill.png"),
     # Фамильяры — папка "spirits"
     "fam_hi": _url("spirits/familiar_HI.png"),
     "fam_je": _url("spirits/JE.png"),
-    "fam_ku": _url("spirits/Ku.png"),
+    "fam_ku": _url("spirits/KU.png"),
     "fam_a": _url("spirits/A.png"),
     "fam_leon": _url("spirits/LEON.png"),
     "fam_mus": _url("spirits/MUS.png"),
@@ -175,10 +180,10 @@ SPIRIT = {
 # КАТЕГОРИИ ИНФОРМАЦИИ
 # ═══════════════════════════════════════════════════════
 INFO_CATEGORIES = {
-    "info_general": _url("info_general.png"),
+    "info_general": _url("class_etc/sl_icon.png"),
     "info_event": _url("info_event.png"),
     "info_rage": _url("skills/Rage.png"),
-    "info_ads": _url("info_ads.png"),
+    "info_ads": _url("class_etc/rek_scroll.png"),
     "info_pets": _url("info_pets.png"),
     "info_sword": _url("info_sword.png"),
     "info_farm": _url("info_farm.png"),
@@ -195,7 +200,7 @@ ADVENTURES = {
     "adv_rift": _url("class_etc/violet_cube.png"),
     "adv_shelter": _url("class_etc/latent_power.png"),
     "adv_mind": _url("class_etc/coin.png"),
-    "adv_forest": _url("class_etc/forest.png"),
+    "adv_forest": _url("class_etc/circulation_gem.png"),
 }
 
 # ═══════════════════════════════════════════════════════
