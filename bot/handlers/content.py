@@ -4,7 +4,6 @@ from aiogram import Bot, F, Router
 from aiogram.exceptions import TelegramBadRequest
 from aiogram.fsm.context import FSMContext
 from aiogram.types import InputMediaPhoto, Message
-
 from config import CAPTION_LIMIT
 from data.guides import CONTENT, SUBMENUS
 from utils import get_content_keyboard, get_main_keyboard, get_submenu_keyboard, send_content_messages, split_text
@@ -188,7 +187,9 @@ def _build_photo(text: str, photo, keyboard) -> list:
         messages_data.append(("answer_media_group", {"media": media_group}))
 
         if text and len(text) > CAPTION_LIMIT:
-            messages_data.append(("answer", {"text": text[CAPTION_LIMIT:], "reply_markup": keyboard, "parse_mode": "HTML"}))
+            messages_data.append(
+                ("answer", {"text": text[CAPTION_LIMIT:], "reply_markup": keyboard, "parse_mode": "HTML"})
+            )
         else:
             messages_data.append(("answer", {"text": "\u200e", "reply_markup": keyboard}))
     else:
@@ -196,6 +197,8 @@ def _build_photo(text: str, photo, keyboard) -> list:
         messages_data.append(("answer_photo", {"photo": photo_id, "caption": caption, "reply_markup": keyboard}))
 
         if text and len(text) > CAPTION_LIMIT:
-            messages_data.append(("answer", {"text": text[CAPTION_LIMIT:], "reply_markup": keyboard, "parse_mode": "HTML"}))
+            messages_data.append(
+                ("answer", {"text": text[CAPTION_LIMIT:], "reply_markup": keyboard, "parse_mode": "HTML"})
+            )
 
     return messages_data

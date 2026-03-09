@@ -4,7 +4,6 @@ from aiogram import Bot, F, Router
 from aiogram.filters import Command
 from aiogram.fsm.context import FSMContext
 from aiogram.types import Message, ReplyKeyboardRemove
-
 from data.guides import MAIN_CATEGORIES, SUBMENUS
 from utils import clear_user_messages, get_main_keyboard, get_submenu_keyboard, set_menu_message_id
 

@@ -1,4 +1,5 @@
 import asyncio
+import logging
 import sys
 from pathlib import Path
 
@@ -18,7 +19,12 @@ logger.remove()
 # Консоль
 logger.add(
     sys.stdout,
-    format="<green>{time:YYYY-MM-DD HH:mm:ss}</green> | <level>{level:<8}</level> | <cyan>{name}</cyan> | <level>{message}</level>",
+    format=(
+        "<green>{time:YYYY-MM-DD HH:mm:ss}</green> | "
+        "<level>{level:<8}</level> | "
+        "<cyan>{name}</cyan> | "
+        "<level>{message}</level>"
+    ),
     level="INFO",
     colorize=True,
 )
@@ -43,10 +49,8 @@ logger.add(
     encoding="utf-8",
 )
 
+
 # Проброс стандартного logging в loguru
-import logging
-
-
 class InterceptHandler(logging.Handler):
     def emit(self, record):
         try:
