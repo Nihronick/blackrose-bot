@@ -1,25 +1,24 @@
 import asyncio
-import signal
 import sys
 from pathlib import Path
 
 from aiogram import Bot, Dispatcher
 from aiogram.fsm.storage.memory import MemoryStorage
 from config import ACCESS_MODE, API_TOKEN
-from handlers import content_router, errors_router, helpers_router, menu_router
+from handlers import content_router, errors_router, menu_router
 from loguru import logger
 from middleware import AccessMiddleware
 
-# ✅ Создаём папку для логов
+# Папка для логов
 Path("logs").mkdir(exist_ok=True)
 
-# ✅ Настройка loguru
+# Настройка loguru
 logger.remove()
 
 # Консоль
 logger.add(
     sys.stdout,
-    format="<green>{time:YYYY-MM-DD HH:mm:ss}</green> | <level>{level: <8}</level> | <cyan>{name}</cyan> | <level>{message}</level>",
+    format="<green>{time:YYYY-MM-DD HH:mm:ss}</green> | <level>{level:<8}</level> | <cyan>{name}</cyan> | <level>{message}</level>",
     level="INFO",
     colorize=True,
 )
@@ -30,7 +29,7 @@ logger.add(
     rotation="00:00",
     retention="7 days",
     level="DEBUG",
-    format="{time:YYYY-MM-DD HH:mm:ss} | {level: <8} | {name} | {message}",
+    format="{time:YYYY-MM-DD HH:mm:ss} | {level:<8} | {name} | {message}",
     encoding="utf-8",
 )
 
@@ -40,43 +39,51 @@ logger.add(
     rotation="00:00",
     retention="7 days",
     level="ERROR",
-    format="{time:YYYY-MM-DD HH:mm:ss} | {level: <8} | {name} | {message} | {exception}",
+    format="{time:YYYY-MM-DD HH:mm:ss} | {level:<8} | {name} | {message} | {exception}",
     encoding="utf-8",
 )
+
+# Проброс стандартного logging в loguru
+import logging
+
+
+class InterceptHandler(logging.Handler):
+    def emit(self, record):
+        try:
+            level = logger.level(record.levelname).name
+        except ValueError:
+            level = record.levelno
+        frame, depth = logging.currentframe(), 2
+        while frame and frame.f_code.co_filename == logging.__file__:
+            frame = frame.f_back
+            depth += 1
+        logger.opt(depth=depth, exception=record.exc_info).log(level, record.getMessage())
+
+
+logging.basicConfig(handlers=[InterceptHandler()], level=0, force=True)
 
 logger.info("🚀 Инициализация бота...")
 
 bot = Bot(token=API_TOKEN)
 dp = Dispatcher(storage=MemoryStorage())
 
+# Middleware
+if ACCESS_MODE and ACCESS_MODE != "off":
+    dp.message.middleware(AccessMiddleware())
+    dp.callback_query.middleware(AccessMiddleware())
 
-# ✅ Graceful shutdown
+# Роутеры
+dp.include_router(errors_router)
+dp.include_router(content_router)
+dp.include_router(menu_router)
+
+
 async def shutdown():
     """Корректное завершение работы"""
     logger.info("🛑 Завершение работы бота...")
     await bot.session.close()
     await dp.storage.close()
     logger.info("✅ Все соединения закрыты")
-
-
-def signal_handler(signum, frame):
-    logger.info(f"📴 Получен сигнал {signum}")
-    asyncio.create_task(shutdown())
-    sys.exit(0)
-
-
-signal.signal(signal.SIGINT, signal_handler)
-signal.signal(signal.SIGTERM, signal_handler)
-
-# Middleware
-if ACCESS_MODE is not None:
-    dp.message.middleware(AccessMiddleware())
-
-# Роутеры
-dp.include_router(errors_router)
-dp.include_router(content_router)
-dp.include_router(menu_router)
-dp.include_router(helpers_router)
 
 
 async def main():

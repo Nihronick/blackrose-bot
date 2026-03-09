@@ -1,5 +1,6 @@
 from aiogram.types import ReplyKeyboardMarkup
 from aiogram.utils.keyboard import ReplyKeyboardBuilder
+
 from data.guides import MAIN_CATEGORIES, SUBMENUS
 
 
@@ -7,7 +8,7 @@ def get_main_keyboard() -> ReplyKeyboardMarkup:
     """Главное меню (Reply Keyboard)"""
     builder = ReplyKeyboardBuilder()
 
-    for _callback, text in MAIN_CATEGORIES.items():  # префикс _ показывает что не используется
+    for _callback, text in MAIN_CATEGORIES.items():
         builder.button(text=text)
 
     builder.adjust(2)
@@ -17,9 +18,7 @@ def get_main_keyboard() -> ReplyKeyboardMarkup:
 
 
 def get_submenu_keyboard(category_key: str) -> ReplyKeyboardMarkup:
-    """
-    Подменю категории (Reply Keyboard).
-    """
+    """Подменю категории (Reply Keyboard)"""
     builder = ReplyKeyboardBuilder()
     items = SUBMENUS.get(category_key, [])
 
@@ -33,9 +32,7 @@ def get_submenu_keyboard(category_key: str) -> ReplyKeyboardMarkup:
 
 
 def get_content_keyboard(category_key: str | None = None) -> ReplyKeyboardMarkup:
-    """
-    Клавиатура навигации для контента.
-    """
+    """Клавиатура навигации для контента"""
     builder = ReplyKeyboardBuilder()
 
     if category_key:
@@ -44,10 +41,3 @@ def get_content_keyboard(category_key: str | None = None) -> ReplyKeyboardMarkup
     builder.button(text="🏠 Главное меню")
 
     return builder.as_markup(resize_keyboard=True, one_time_keyboard=False)
-
-
-def get_close_keyboard() -> ReplyKeyboardMarkup:
-    """Клавиатура с кнопкой открытия меню"""
-    builder = ReplyKeyboardBuilder()
-    builder.button(text="📋 Открыть меню")
-    return builder.as_markup(resize_keyboard=True)

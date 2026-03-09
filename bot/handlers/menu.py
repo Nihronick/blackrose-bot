@@ -4,6 +4,7 @@ from aiogram import Bot, F, Router
 from aiogram.filters import Command
 from aiogram.fsm.context import FSMContext
 from aiogram.types import Message, ReplyKeyboardRemove
+
 from data.guides import MAIN_CATEGORIES, SUBMENUS
 from utils import clear_user_messages, get_main_keyboard, get_submenu_keyboard, set_menu_message_id
 
@@ -21,11 +22,14 @@ async def cmd_start(message: Message, state: FSMContext, bot: Bot):
 
 async def show_main_menu(message: Message, state: FSMContext, bot: Bot):
     """Показать главное меню"""
-    await clear_user_messages(message.from_user.id, state, bot)
+    await clear_user_messages(state, bot)
     await state.clear()
 
-    msg = await message.answer("👋 Привет! Выберите раздел справочника:", reply_markup=get_main_keyboard())
-    await set_menu_message_id(message.from_user.id, msg.message_id, state)
+    msg = await message.answer(
+        "👋 Привет! Выберите раздел справочника:",
+        reply_markup=get_main_keyboard(),
+    )
+    await set_menu_message_id(msg.message_id, state)
     logger.info(f"📋 Меню создано (msg_id={msg.message_id})")
 
 
@@ -33,7 +37,10 @@ async def show_main_menu(message: Message, state: FSMContext, bot: Bot):
 async def close_menu(message: Message, state: FSMContext):
     """Закрыть меню"""
     await state.clear()
-    await message.answer("Меню закрыто. Напишите что угодно чтобы открыть.", reply_markup=ReplyKeyboardRemove())
+    await message.answer(
+        "Меню закрыто. Напишите /start чтобы открыть.",
+        reply_markup=ReplyKeyboardRemove(),
+    )
 
 
 @router.message(F.text == "🏠 Главное меню")
@@ -50,7 +57,7 @@ async def back_to_main_from_submenu(message: Message, state: FSMContext, bot: Bo
     await show_main_menu(message, state, bot)
 
 
-# ✅ СТРОГИЙ ФИЛЬТР: только кнопки ГЛАВНОГО меню
+# Кнопки ГЛАВНОГО меню
 @router.message(F.text.in_(list(MAIN_CATEGORIES.values())))
 async def process_category_text(message: Message, state: FSMContext, bot: Bot):
     """Обработка кнопок ГЛАВНОГО меню"""
@@ -61,7 +68,7 @@ async def process_category_text(message: Message, state: FSMContext, bot: Bot):
     for key, value in MAIN_CATEGORIES.items():
         if value == category_text:
             category_key = key
-            logger.info(f"   ✅ Найдена категория: {category_key}")
+            logger.info(f"  ✅ Найдена категория: {category_key}")
             break
 
     if not category_key:
@@ -72,14 +79,16 @@ async def process_category_text(message: Message, state: FSMContext, bot: Bot):
         return
 
     await state.update_data(current_category=category_key)
+    await message.answer(
+        "📂 Выберите материал:",
+        reply_markup=get_submenu_keyboard(category_key),
+    )
 
-    await message.answer("📂 Выберите материал:", reply_markup=get_submenu_keyboard(category_key))
 
-
-# ✅ Обработка неизвестных сообщений (авто-меню)
+# Обработка неизвестных сообщений — ПОСЛЕДНИЙ хендлер
 @router.message()
 async def handle_unknown_message(message: Message, state: FSMContext, bot: Bot):
-    """Авто-меню при первом запуске"""
+    """Авто-меню при любом неизвестном сообщении"""
     data = await state.get_data()
     has_menu = data.get("menu_message_id")
 

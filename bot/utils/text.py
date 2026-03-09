@@ -13,6 +13,8 @@ def split_text(text: str, limit: int = None) -> list[str]:
             split_index = limit
         chunks.append(text[:split_index])
         text = text[split_index:].lstrip()
+
     if text:
         chunks.append(text)
+
     return chunks
