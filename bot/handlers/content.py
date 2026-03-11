@@ -1,4 +1,4 @@
-import logging
+'''import logging
 
 from aiogram import Bot, F, Router
 from aiogram.exceptions import TelegramBadRequest
@@ -202,3 +202,4 @@ def _build_photo(text: str, photo, keyboard) -> list:
             )
 
     return messages_data
+'''

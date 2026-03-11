@@ -1,4 +1,4 @@
-import logging
+'''import logging
 
 from aiogram import Bot, F, Router
 from aiogram.filters import Command
@@ -94,3 +94,4 @@ async def handle_unknown_message(message: Message, state: FSMContext, bot: Bot):
     if not has_menu:
         logger.info("📋 Первое сообщение — показываем меню")
         await show_main_menu(message, state, bot)
+'''

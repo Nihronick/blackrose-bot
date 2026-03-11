@@ -1,14 +1,15 @@
 import asyncio
 import logging
-import os
 import sys
 from pathlib import Path
 
 from aiogram import Bot, Dispatcher
 from aiogram.fsm.storage.memory import MemoryStorage
 from config import ACCESS_MODE, API_TOKEN
-from handlers import content_router, errors_router, menu_router
-from handlers.miniapp import miniapp_router  # ← НОВЫЙ
+
+# from handlers import content_router, errors_router, menu_router  # OLD
+from handlers.miniapp import miniapp_router
+from handlers.errors import errors_router
 from loguru import logger
 from middleware import AccessMiddleware
 
@@ -78,11 +79,15 @@ if ACCESS_MODE and ACCESS_MODE != "off":
     dp.message.middleware(AccessMiddleware())
     dp.callback_query.middleware(AccessMiddleware())
 
-# Роутеры
+# ═══════════════════════════════════════════════════════
+# РОУТЕРЫ
+# ═══════════════════════════════════════════════════════
 dp.include_router(errors_router)
-dp.include_router(miniapp_router)  # ← ДО menu_router
-dp.include_router(content_router)
-dp.include_router(menu_router)
+dp.include_router(miniapp_router)  # MiniApp — основной функционал
+
+# ─── Старые роутеры (закомментированы) ───
+# dp.include_router(content_router)
+# dp.include_router(menu_router)
 
 
 async def shutdown():
