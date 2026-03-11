@@ -1,4 +1,4 @@
-from aiogram.types import ReplyKeyboardMarkup
+'''from aiogram.types import ReplyKeyboardMarkup
 from aiogram.utils.keyboard import ReplyKeyboardBuilder
 from data.guides import MAIN_CATEGORIES, SUBMENUS
 
@@ -40,3 +40,4 @@ def get_content_keyboard(category_key: str | None = None) -> ReplyKeyboardMarkup
     builder.button(text="🏠 Главное меню")
 
     return builder.as_markup(resize_keyboard=True, one_time_keyboard=False)
+'''
