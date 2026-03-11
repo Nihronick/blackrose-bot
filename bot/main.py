@@ -6,6 +6,7 @@ from pathlib import Path
 from aiogram import Bot, Dispatcher
 from aiogram.fsm.storage.memory import MemoryStorage
 from config import ACCESS_MODE, API_TOKEN
+from handlers.errors import router as errors_router
 
 # from handlers import content_router, errors_router, menu_router  # OLD
 from handlers.miniapp import miniapp_router
